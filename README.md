@@ -1,6 +1,6 @@
 # Online-Trending
 *****
-## Team Members
+## Team Members - Developers
 * [Nidhi Gupta](https://github.com/nidhi98gupta)
 * [Raksha Rank](https://github.com/RakshaRank)
 * [Chirag Podar](https://github.com/ChiragPoddar99)
