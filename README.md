@@ -33,7 +33,48 @@ source env/bin/activate
 ```
 ******
 ### Instructions For Execution the App.
-1. Activate Virtual Environment as mention above.
-2. Running Django 
+## Running Locally
+
+First, clone the repository to your local machine:
+
+```
+git clone https://github.com/Tikam02/Online-Trending
+```
+
+
+Go To the Online-Trending Folder
+```bash
+cd Online-Trending
+```
+Activate Virtual Environment
+```bash
+source env/bin/activate
+```
+
+Install the requirements:
+
+```bash
+pip install -r requirements/dev.txt
+```
+
+Apply the migrations:
+
+```bash
+python manage.py migrate
+```
+
+Load the initial data:
+
+```bash
+python manage.py loaddata services.json
+```
+
+Finally, run the development server:
+
+```bash
+python manage.py runserver
+```
+
+The site will be available at **127.0.0.1:8000**.
 
 
