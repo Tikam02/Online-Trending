@@ -1,5 +1,14 @@
 # Online-Trending
 *****
+## Team Members
+* [Nidhi Gupta](https://github.com/nidhi98gupta)
+* [Raksha Rank](https://github.com/RakshaRank)
+* [Chirag Podar](https://github.com/ChiragPoddar99)
+* [Swapnil Dhimmar](https://github.com/sdhimmar006)
+* [Tikam Alma](https://github.com/Tikam02)
+* [Amey Ghate](https://github.com/amey-ghate)
+* [Shreya Sagar]()
+* [Vishwa Seth](https://github.com/Vishwa-Sheth)
 ## Installation
 
 ### Installing virtualenv
