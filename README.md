@@ -54,7 +54,7 @@ source env/bin/activate
 Install the requirements:
 
 ```bash
-pip install -r requirements/dev.txt
+pip install -r requirements
 ```
 
 Apply the migrations:
@@ -63,11 +63,11 @@ Apply the migrations:
 python manage.py migrate
 ```
 
-Load the initial data:
-
+Apply Make migrations:
 ```bash
-python manage.py loaddata services.json
+python manage.py makemigration
 ```
+
 
 Finally, run the development server:
 
