@@ -7,7 +7,7 @@
 * [Swapnil Dhimmar](https://github.com/sdhimmar006)
 * [Tikam Alma](https://github.com/Tikam02)
 * [Amey Ghate](https://github.com/amey-ghate)
-* [Shreya Sagar]()
+* [Shreya Sagar](https://github.com/shreya1706) 
 * [Vishwa Seth](https://github.com/Vishwa-Sheth)
 ## Installation
 
