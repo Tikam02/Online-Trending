@@ -1,0 +1,64 @@
+{% load staticfiles %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Apex{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'img/favicon-16x16.png' %}" sizes="16x16">
+
+    <link rel="manifest" href="{% static 'img/manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'img/mstile-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="mask-icon" href="{% static 'img/pinned-woid.svg' %}" color="#0e1936">
+    <link href="{% static 'css/vendor/normalize.css' %}" rel="stylesheet">
+    <link href="{% static 'css/apex.css' %}" rel="stylesheet">
+    {% block stylesheet %}{% endblock %}
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+        <a href={% url 'front_page' %}>apex</a>
+        {% comment %}
+        {% if user.is_authenticated %}
+            <nav><a href = "{% url 'frontpage' %}">{{ user.username }}</a> / <a href ="{% url 'logout' %}">logout</a></nav>
+        {% else %}
+            <nav><a href = "{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
+        {% endif %}
+        {% endcomment %}
+        <nav>&nbsp;</nav>
+        </header>
+        <main>
+        {% for message in messages %}
+            <div class = "alert alert-{{ message.tags }}">
+                <a href="javascript:void(0);" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% block menu %}
+            <h1>Top Stories/Posts<span class="utc"></span></h1>
+            {% include 'includes/menu.html' %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+        </main>
+            <div class="push"</div>
+    </div>
+    <footer>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'status' %}">Status</a>
+    <a href="https://github.com/Tikam02/Online-Trending/" target="_blank">Github</a>
+    <a href="{% url 'cookies' %}">Cookies</a>
+    <a href="{% url 'privacy' %}">Privacy</a>
+    <a href="{% url 'terms' %}">Terms</a>
+    </footer>
+      <script src="{% static 'js/ga.js' %}"></script>
+  <script src="{% static 'js/vendor/jquery-1.11.3.min.js' %}"></script>
+  <script src="{% static 'js/vendor/mustache.min.js' %}"></script>
+  <script src="{% static 'js/vendor/moment.min.js' %}"></script>
+  <script src="{% static 'js/vendor/moment-timezone-with-data-2010-2020.min.js' %}"></script>
+  <script src="{% static 'js/apex.js' %}"></script>
+  {% block javascript %}{% endblock %}
+</body>
+</html>
