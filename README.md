@@ -32,7 +32,7 @@ source env/bin/activate
 Install the requirements:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 Apply the migrations:
