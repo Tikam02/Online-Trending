@@ -18,7 +18,7 @@ First, clone the repository to your local machine:
 ```
 git clone https://github.com/Tikam02/Online-Trending
 ```
-
+Make sure to add your username and password because this is private Repository and You're collaborator.
 
 Go To the Online-Trending Folder
 ```bash
