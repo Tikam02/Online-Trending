@@ -55,6 +55,15 @@ python manage.py runserver
 
 The site will be available at **127.0.0.1:8000**.
 
+***** 
+# Web Pages Links
+```
+127.0.0.1:8000/login  ----->>>> Login Page
+127.0.0.1:8000/signup ---->>>> Sign Up Page
+127.0.0.1:8000/home   ---->>>> Home Page
+127.0.0.1:8000/about  ---->>>> About Page
+```
+
 
 ****** 
 ### Optional - How to install Virtual Environments
