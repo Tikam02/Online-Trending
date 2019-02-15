@@ -1,0 +1,8 @@
+apex/Services/models.py 
+
+This module is the database initiator modules which saves data to the databse.
+1) Services
+ - It check the status of the Service that is GOOd,BAD ,CRAWLING and CUURENT-STATUS.Also recive input of name and url field.
+2) Story
+ - It checks and stores the type of posts and articles that is Text, image and url.
+ 3) Story Update

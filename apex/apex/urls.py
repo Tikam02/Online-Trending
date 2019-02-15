@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
+from django.conf import settings
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import include, path
+from django.views.generic.edit import CreateView
+
+from apex.apps.core import views as core_views
+from apex.apps.services import views as services_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+   # path('admin/', admin.site.urls),
+    path('', services_views.front_page, name='front_page'),
 ]
