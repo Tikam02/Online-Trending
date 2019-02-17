@@ -62,6 +62,11 @@ The site will be available at **127.0.0.1:8000**.
 127.0.0.1:8000/signup ---->>>> Sign Up Page
 127.0.0.1:8000/home   ---->>>> Home Page
 127.0.0.1:8000/about  ---->>>> About Page
+127.0.0.1:8000/status  ---->>>> Status of Crawler and Server
+127.0.0.1:8000/privacy ---->>>>
+127.0.0.1:8000/terms ---->>>> 
+127.0.0.1:8000/logout ---->>>> 
+
 ```
 
 
