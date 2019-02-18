@@ -46,6 +46,21 @@ Apply Make migrations:
 python manage.py makemigration
 ```
 
+Load the API Services that is stored in services.json,so that it will be loaded to the database.
+
+```
+python manage.py loaddata services.json
+```
+
+then Crawl the services:
+```
+python manage.py crawl reddit
+```
+You can pass multiple services at once:
+
+```
+python manage.py crawl reddit hn nytimes
+```
 
 Finally, run the development server:
 
