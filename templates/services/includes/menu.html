@@ -1,0 +1,14 @@
+{% load services_url %}
+
+<ul class="menu-stories">
+  <li><a href="{% url 'services:index' service.slug %}">today</a></li>
+  <li><a href="{% services_url slug=service.slug delta=1 %}">yesterday</a></li>
+  <li><a href="{% services_url slug=service.slug delta=2 %}">{% services_url_name slug=service.slug delta=2 %}</a></li>
+  <li><a href="{% services_url slug=service.slug delta=3 %}">{% services_url_name slug=service.slug delta=3 %}</a></li>
+  <li><a href="{% services_url slug=service.slug delta=4 %}">{% services_url_name slug=service.slug delta=4 %}</a></li>
+  <li><a href="{% services_url slug=service.slug delta=5 %}">{% services_url_name slug=service.slug delta=5 %}</a></li>
+  <li><a href="{% services_url slug=service.slug delta=6 %}">{% services_url_name slug=service.slug delta=6 %}</a></li>
+  <li><a href="{% services_url_month slug=service.slug %}">{% services_url_month_name %}</a></li>
+  <li><a href="{% services_url_year slug=service.slug %}">{% now 'Y' %}</a></li>
+  <li><a href="{% url 'services:archive' service.slug %}">archive</a></li>
+</ul>
