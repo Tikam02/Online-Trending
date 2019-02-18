@@ -53,6 +53,12 @@ Finally, run the development server:
 python manage.py runserver
 ```
 
+To run the crawler
+```
+python manage.py crawl reddit
+```
+
+
 The site will be available at **127.0.0.1:8000**.
 
 ***** 
