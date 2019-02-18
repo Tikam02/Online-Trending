@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Woid{% endblock %}</title>
+  <title>{% block title %}Apex{% endblock %}</title>
   <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/apple-touch-icon-57x57.png' %}">
   <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/apple-touch-icon-60x60.png' %}">
   <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
@@ -31,7 +31,7 @@
 <body>
   <div class="wrapper">
     <header>
-      <a href="{% url 'front_page' %}">woid</a>
+      <a href="{% url 'front_page' %}">apex</a>
       {% comment %}
       {% if user.is_authenticated %}
         <nav><a href="{% url 'front_page' %}">{{ user.username }}</a> / <a href="{% url 'logout' %}">logout</a></nav>
@@ -59,7 +59,7 @@
   <footer>
     <a href="{% url 'about' %}">about</a>
     <a href="{% url 'status' %}">status</a>
-    <a href="https://github.com/vitorfs/woid/" target="_blank">github</a>
+    <a href="https://github.com/Tikam02/Online-Trending" target="_blank">Github</a>
     {% comment %}
     <a href="{% url 'cookies' %}">cookies</a>
     <a href="{% url 'privacy' %}">privacy</a>

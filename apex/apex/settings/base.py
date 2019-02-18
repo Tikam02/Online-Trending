@@ -16,7 +16,7 @@ SECRET_KEY = 'r#*x&hnz3qu9t*5k^5d8^i_uav6_%9!9toy$f@2q+egz6nd%9&'
 
 #SECRET_KEY = config('SECRET_KEY', default=string.ascii_letters)
 
-#DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
 
