@@ -14,9 +14,9 @@ echo -e "
 | 5.) Crawl Services                        | 
 | 6.) Git Fetch and PULL origin             |
 | 7.) Git status                            |
-| 8.) Git Add and Push Origin   
-| 9.) Git Stash            | 
-| 10.) Quit                                  |
+| 8.) Git Add and Push Origin               |
+| 9.) Git Stash                             | 
+| 10.) Quit                                 |
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#\n"
 
 read -e -p "Select 1: " choice
