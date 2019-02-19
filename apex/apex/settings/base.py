@@ -173,6 +173,6 @@ CACHES = {
 # THIRD-PARTY APPS SETTINGS
 # ==============================================================================
 
-NYTIMES_API_KEY = config('NYTIMES_API_KEY', default='')
+NYTIMES_API_KEY = config('NYTIMES_API_KEY', default='7txQr6vATslGYYoGh7pZ7ZD424T77cQD')
 
 PRODUCT_HUNT_TOKEN = config('PRODUCT_HUNT_TOKEN', default='')
