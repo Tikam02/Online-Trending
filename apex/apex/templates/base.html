@@ -32,13 +32,12 @@
   <div class="wrapper">
     <header>
       <a href="{% url 'front_page' %}">apex</a>
-      {% comment %}
       {% if user.is_authenticated %}
-        <nav><a href="{% url 'front_page' %}">{{ user.username }}</a> / <a href="{% url 'logout' %}">logout</a></nav>
+        <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
+          <a href="{% url 'logout' %}">logout</a></nav>
       {% else %}
         <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
       {% endif %}
-      {% endcomment %}
       <nav>&nbsp;</nav>
     </header>
     <main>
@@ -60,11 +59,9 @@
     <a href="{% url 'about' %}">about</a>
     <a href="{% url 'status' %}">status</a>
     <a href="https://github.com/Tikam02/Online-Trending" target="_blank">Github</a>
-    {% comment %}
     <a href="{% url 'cookies' %}">cookies</a>
     <a href="{% url 'privacy' %}">privacy</a>
     <a href="{% url 'terms' %}">terms</a>
-    {% endcomment %}
   </footer>
   <script src="{% static 'js/ga.js' %}"></script>
   <script src="{% static 'js/vendor/jquery-1.11.3.min.js' %}"></script>
@@ -73,5 +70,8 @@
   <script src="{% static 'js/vendor/moment-timezone-with-data-2010-2020.min.js' %}"></script>
   <script src="{% static 'js/woid.js' %}"></script>
   {% block javascript %}{% endblock %}
+  { % comment }
+Jdbdid63  
+  { % endcomment }
 </body>
 </html>

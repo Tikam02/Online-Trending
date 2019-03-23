@@ -16,6 +16,10 @@ class Command(BaseCommand):
             'producthunt': crawlers.ProductHuntCrawler,
             'github': crawlers.GithubCrawler,
             'nytimes': crawlers.NYTimesCrawler,
+            'google-news': crawlers.GoogleNewsCrawler,
+            'bbc-sport': crawlers.BBCSportCrawler,
+            'entertainment-weekly': crawlers.EntertainmentCrawler,
+           # 'Business-Insider': crawlers.BusinessCrawler,
         }
         return crawlers_classes.get(slug)
 
@@ -39,7 +43,32 @@ class Command(BaseCommand):
                 ))
                 continue
 
+            if slug == 'google-news' and not settings.GOOGLE_NEWS_KEY:
+                self.stdout.write(self.style.ERROR(
+                    'The GoogleNews crawler is missing API Key. '
+                ))
+                continue
+
+            if slug == 'bbc-sport' and not settings.BBC_SPORT_KEY:
+                self.stdout.write(self.style.ERROR(
+                    'The BBCSport crawler is missing API Key. '
+                ))
+                continue
+
+            if slug == 'entertainment-weekly' and not settings.ENTERTAINMENT_KEY:
+                self.stdout.write(self.style.ERROR(
+                    'The Entertainment Crawler is missing API Key. '
+                ))
+                continue
+
+            """if slug == 'Business-Insider' and not settings.BUSINESS_KEY:
+                self.stdout.write(self.style.ERROR(
+                    'The Business Crawler is missing API Key. '
+                ))
+                continue"""
+
             crawler_class = self.get_crawler_class(slug)
+
             if crawler_class is not None:
                 crawler = crawler_class()
                 start_time = time.time()

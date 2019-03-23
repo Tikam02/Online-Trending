@@ -2,7 +2,6 @@
 
 from django.db import models
 
-
 class Service(models.Model):
     GOOD = 'G'
     ERROR = 'E'
@@ -39,7 +38,6 @@ class Service(models.Model):
         template = 'services/includes/{0}_story.html'.format(self.slug)
         return template
 
-
 class Story(models.Model):
     TEXT = 'T'
     URL = 'U'
@@ -63,6 +61,7 @@ class Story(models.Model):
     code = models.CharField(max_length=255)
     title = models.CharField(max_length=500, null=True, blank=True)
     url = models.URLField(max_length=2000, null=True, blank=True)
+    image_url = models.URLField(max_length=2000, null=True, blank=True)
     content = models.TextField(null=True, blank=True)
     content_type = models.CharField(max_length=1, choices=CONTENT_TYPES, null=True, blank=True)
     start_comments = models.IntegerField(default=0)

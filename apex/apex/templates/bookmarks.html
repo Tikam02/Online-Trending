@@ -1,0 +1,14 @@
+<h1>Bookmarks </h1>
+
+{% if user.is_authenticated %}
+	{{ user.username }}<br></br>
+
+	{{ user.bookmarks }}
+
+	{% for i in user.bookmarks %}
+		{{ i }}
+	{% endfor %}
+
+{% endif %}
+
+{{ user.last_login }}

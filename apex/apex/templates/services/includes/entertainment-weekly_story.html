@@ -1,0 +1,97 @@
+<br></br>
+<li>
+  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" style="font-size:25px">{{ story.title }}</a>
+  {% if story.nsfw %}
+    <small class="nsfw">[nsfw]</small>
+  {% endif %}
+  {% if append_service %}
+    <small><strong>{{ story.service.name }}</strong></small>
+  {% endif %}
+  <!--  <button type="bullet" value="reset">Bookmark this</button> -->
+  <p style="font-size:17px">
+    {{ story.description }}
+  </p>
+
+  <img src= {{ story.image_url }} alt="Image Displayed here" height=150>
+
+  <p style="font-size:20px">
+    &bullet;
+    {{ story.date|date:'M d, Y'|lower }}
+    <style>
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+</style>
+  {% if user.is_authenticated %}
+<label class="container">
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+  </p>
+  {% endif %}
+
+</li>

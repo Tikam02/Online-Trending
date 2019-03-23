@@ -9,10 +9,14 @@ from apex.apps.services.models import Service, Story, StoryUpdate
 
 logger = logging.getLogger(__name__)
 
-
 class AbstractBaseCrawler:
     def __init__(self, slug, client):
-        self.service = Service.objects.get(slug=slug)
+        #Service.objects.all().delete()
+
+        # for i in Service.objects.all():
+        #     print(i)
+
+        self.service=Service.objects.get(slug=slug)
         self.slug = slug
         self.client = client
 
@@ -24,11 +28,12 @@ class AbstractBaseCrawler:
             self.update_top_stories()
             self.service.status = Service.GOOD
             self.service.save()
+            i=5
         except Exception:
             self.service.status = Service.ERROR
             self.service.save()
-
-
+            j=5
+            
 class HackerNewsCrawler(AbstractBaseCrawler):
     def __init__(self):
         super().__init__('hn', wrappers.HackerNewsClient())
@@ -133,8 +138,8 @@ class RedditCrawler(AbstractBaseCrawler):
             logger.exception('An error occurred while executing `update_top_stores` for Reddit.')
             raise
 
-
 class GithubCrawler(AbstractBaseCrawler):
+
     def __init__(self):
         super().__init__('github', wrappers.GithubClient())
 
@@ -142,12 +147,14 @@ class GithubCrawler(AbstractBaseCrawler):
         try:
             repos = self.client.get_today_trending_repositories()
             today = timezone.now()
+
             for data in repos:
                 story, created = Story.objects.get_or_create(
                     service=self.service,
                     code=data.get('name'),
                     date=timezone.datetime(today.year, today.month, today.day, tzinfo=timezone.get_current_timezone())
                 )
+
                 if created:
                     story.build_url()
 
@@ -161,31 +168,33 @@ class GithubCrawler(AbstractBaseCrawler):
 
                 if story.status == Story.NEW:
                     story.score = stars
+
                 elif has_changes:
                     # update = StoryUpdate(story=story)
+
                     # update.score_changes = stars - story.score
+
                     # update.save()
+
                     story.score = stars
 
                 story.title = data.get('name')[1:]
-
                 description = data.get('description', '')
                 language = data.get('language', '')
 
                 if language and description:
                     description = '{0} • {1}'.format(language, description)
+
                 elif language:
                     description = language
 
                 story.description = description
-
                 story.status = Story.OK
                 story.save()
 
         except Exception:
             logger.exception('An error occurred while executing `update_top_stores` for GitHub.')
             raise
-
 
 class NYTimesCrawler(AbstractBaseCrawler):
     def __init__(self):
@@ -277,3 +286,189 @@ class ProductHuntCrawler(AbstractBaseCrawler):
         except Exception:
             logger.exception('An error occurred while executing `update_top_stores` for Product Hunt.')
             raise
+                            
+class GoogleNewsCrawler(AbstractBaseCrawler):
+    def __init__(self):
+        super().__init__('google-news', wrappers.GoogleNewsClient())
+
+    def update_top_stories(self):
+        try:
+            posts = self.client.get_top_stories()
+            today = timezone.now()
+
+            for data in posts:
+                
+                story, created = Story.objects.get_or_create(service=self.service,code=data["url"])
+                
+                #if created:
+                    #story.date = timezone.datetime.fromtimestamp(
+                     #   data.get('publishedAt'),
+                      #  timezone.get_current_timezone()
+                    #)
+                story.url=data["url"]
+
+                story.image_url=data["urlToImage"]
+
+                #score = story_data.get('score', 0)
+                comments = 0
+
+                # has_changes = (score != story.score or comments != story.comments)
+
+                # if not story.status == Story.NEW and has_changes:
+                #     update = StoryUpdate(story=story)
+                #     update.comments_changes = comments - story.comments
+                #     update.score_changes = score - story.score
+                #     update.save()
+
+                story.comments = comments
+                story.score = 0
+                story.title = data.get('title', '')
+                story.description=data["description"]
+                #story.nsfw = story_data.get('over_18', False)
+
+                story.status = Story.OK
+                story.save()
+
+        except Exception:
+            logger.exception('An error occurred while executing `update_top_stores` for Google News.')
+            raise
+
+class BBCSportCrawler(AbstractBaseCrawler):
+    def __init__(self):
+        super().__init__('bbc-sport', wrappers.BBCSportClient())
+
+    def update_top_stories(self):
+        try:
+            posts = self.client.get_top_stories()
+            today = timezone.now()
+
+            for data in posts:
+                
+                story, created = Story.objects.get_or_create(service=self.service,code=data["url"])
+                
+                #if created:
+                    #story.date = timezone.datetime.fromtimestamp(
+                     #   data.get('publishedAt'),
+                      #  timezone.get_current_timezone()
+                    #)
+                story.url=data["url"]
+
+                #score = story_data.get('score', 0)
+                comments = 0
+
+                story.image_url=data["urlToImage"]
+
+                # has_changes = (score != story.score or comments != story.comments)
+
+                # if not story.status == Story.NEW and has_changes:
+                #     update = StoryUpdate(story=story)
+                #     update.comments_changes = comments - story.comments
+                #     update.score_changes = score - story.score
+                #     update.save()
+
+                story.comments = comments
+                story.score = 0
+                story.title = data.get('title', '')
+                story.description=data["description"]
+                #story.nsfw = story_data.get('over_18', False)
+
+                story.status = Story.OK
+                story.save()
+
+        except Exception:
+            logger.exception('An error occurred while executing `update_top_stores` for BBC Sports.')
+            raise
+
+class EntertainmentCrawler(AbstractBaseCrawler):
+    def __init__(self):
+        super().__init__('entertainment-weekly', wrappers.EntertainmentClient())
+
+    def update_top_stories(self):
+        try:
+            posts = self.client.get_top_stories()
+            today = timezone.now()
+
+            for data in posts:
+                
+                story, created = Story.objects.get_or_create(service=self.service,code=data["url"])
+                
+                #if created:
+                    #story.date = timezone.datetime.fromtimestamp(
+                     #   data.get('publishedAt'),
+                      #  timezone.get_current_timezone()
+                    #)
+                story.url=data["url"]
+
+                #score = story_data.get('score', 0)
+                story.image_url=data["urlToImage"]
+                comments = 0
+
+                # has_changes = (score != story.score or comments != story.comments)
+
+                # if not story.status == Story.NEW and has_changes:
+                #     update = StoryUpdate(story=story)
+                #     update.comments_changes = comments - story.comments
+                #     update.score_changes = score - story.score
+                #     update.save()
+
+                story.comments = comments
+                story.score = 0
+                story.title = data.get('title', '')
+
+                story.title=story.title.replace('<em>','')
+                story.title=story.title.replace('</em>','')                
+
+                story.description=data["description"]
+                #story.nsfw = story_data.get('over_18', False)
+
+                story.status = Story.OK
+                story.save()
+
+        except Exception:
+            logger.exception('An error occurred while executing `update_top_stores` for EntertainmentCrawler.')
+            raise
+
+"""
+class BusinessCrawler(AbstractBaseCrawler):
+    def __init__(self):
+        super().__init__('Business-Insider', wrappers.BusinessClient())
+
+    def update_top_stories(self):
+        try:
+            posts = self.client.get_top_stories()
+            today = timezone.now()
+
+            for data in posts:
+                
+                story, created = Story.objects.get_or_create(service=self.service,code=data["url"])
+                
+                #if created:
+                    #story.date = timezone.datetime.fromtimestamp(
+                     #   data.get('publishedAt'),
+                      #  timezone.get_current_timezone()
+                    #)
+                story.url=data["url"]
+
+                #score = story_data.get('score', 0)
+                comments = 0
+
+                # has_changes = (score != story.score or comments != story.comments)
+
+                # if not story.status == Story.NEW and has_changes:
+                #     update = StoryUpdate(story=story)
+                #     update.comments_changes = comments - story.comments
+                #     update.score_changes = score - story.score
+                #     update.save()
+
+                story.comments = comments
+                story.score = 0
+                story.title = data.get('title', '')
+                story.description=data["description"]
+                #story.nsfw = story_data.get('over_18', False)
+
+                story.status = Story.OK
+                story.save()
+
+        except Exception:
+            logger.exception('An error occurred while executing `update_top_stores` for BBC Sports.')
+            raise"""

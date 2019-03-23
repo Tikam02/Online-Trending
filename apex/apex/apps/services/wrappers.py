@@ -1,13 +1,14 @@
 # coding: utf-8
 
 import logging
-import re
+import requests
 
 from django.conf import settings
 from django.utils import timezone
 
-import requests
+import requests,re
 from bs4 import BeautifulSoup
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -52,10 +53,8 @@ class RedditClient(AbstractBaseClient):
 
         return stories
 
-
 class GithubClient(AbstractBaseClient):
-
-    def get_today_trending_repositories(self):
+     def get_today_trending_repositories(self):
         r = requests.get('https://github.com/trending?since=daily', headers=self.headers)
         html = r.text
         soup = BeautifulSoup(html, 'html.parser')
@@ -64,7 +63,6 @@ class GithubClient(AbstractBaseClient):
         for repo in repos:
             repo_data = dict()
             repo_data['name'] = repo.h3.a.get('href')
-
             description = repo.p.text
             if description:
                 description = description.strip()
@@ -81,11 +79,9 @@ class GithubClient(AbstractBaseClient):
             stars_text = repo.findAll(text=re.compile('stars today'))
             stars_numbers_only = re.findall(r'\d+', stars_text[0])
             repo_data['stars'] = int(stars_numbers_only[0])
-
             data.append(repo_data)
 
         return data
-
 
 class NYTimesClient(AbstractBaseClient):
 
@@ -137,3 +133,109 @@ class ProductHuntClient(AbstractBaseClient):
         r = requests.get('https://api.producthunt.com/v1/posts?day=%s' % today, headers=self.headers)
         data = r.json()
         return data['posts']
+
+class GoogleNewsClient(AbstractBaseClient):
+    def __init__(self):
+        super().__init__()
+        extra_headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer %s' % settings.GOOGLE_NEWS_KEY,
+            'Host': 'newsapi.org'
+        }
+        self.headers.update(extra_headers)
+
+    def get_top_stories(self):
+
+        stories = list()
+
+        main_url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=ffb8a867858a410cb805e3cd7e6134fd"
+
+        try:
+            stories=requests.get(main_url).json()
+            stories=stories["articles"]
+            return stories   
+
+        except ValueError:
+            logger.exception('An error occurred while executing GoogleNewsClient.get_top_stories')
+            raise
+
+
+class BBCSportClient(AbstractBaseClient):
+    def __init__(self):
+        super().__init__()
+        extra_headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer %s' % settings.BBC_SPORT_KEY,
+            'Host': 'newsapi.org'
+        }
+        self.headers.update(extra_headers)
+
+    def get_top_stories(self):
+
+        stories = list()
+
+        main_url = "https://newsapi.org/v2/top-headlines?sources=bbc-sport&apiKey=ffb8a867858a410cb805e3cd7e6134fd"
+
+        try:
+            stories=requests.get(main_url).json()
+            stories=stories["articles"]
+            return stories   
+
+        except ValueError:
+            logger.exception('An error occurred while executing BBCSportClient.get_top_stories')
+            raise         
+
+class EntertainmentClient(AbstractBaseClient):
+    def __init__(self):
+        super().__init__()
+        extra_headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer %s' % settings.ENTERTAINMENT_KEY,
+            'Host': 'newsapi.org'
+        }
+        self.headers.update(extra_headers)
+
+    def get_top_stories(self):
+
+        stories = list()
+
+        main_url = "https://newsapi.org/v2/top-headlines?sources=entertainment-weekly&apiKey=ffb8a867858a410cb805e3cd7e6134fd"
+
+        try:
+            stories=requests.get(main_url).json()
+            stories=stories["articles"]
+            return stories   
+
+        except ValueError:
+            logger.exception('An error occurred while executing EntertainmentClient.get_top_stories')
+            raise         
+
+"""
+class BusinessClient(AbstractBaseClient):
+    def __init__(self):
+        super().__init__()
+        extra_headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer %s' % settings.BUSINESS_KEY,
+            'Host': 'newsapi.org'
+        }
+        self.headers.update(extra_headers)
+
+    def get_top_stories(self):
+
+        stories = list()
+
+        main_url = "https://newsapi.org/v2/top-headlines?sources=business-insider&apiKey=ffb8a867858a410cb805e3cd7e6134fd"
+
+        try:
+            stories=requests.get(main_url).json()
+            stories=stories["articles"]
+            return stories   
+
+        except ValueError:
+            logger.exception('An error occurred while executing EntertainmentClient.get_top_stories')
+            raise         """

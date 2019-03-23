@@ -43,6 +43,33 @@
         "url": "https://www.producthunt.com",
         "story_url": "https://www.producthunt.com/posts/"
       }
-    }
-  ]
+    },
+    {
+      "model": "services.Service",
+      "fields": {
+        "name": "Google News",
+        "slug": "google-news",
+        "url": "https://news.google.com/topics",
+        "story_url": "https://news.google.com/"
+      }
+    },
+    {
+      "model": "services.Service",
+      "fields": {
+        "name": "BBC Sport",
+        "slug": "bbc-sport",
+        "url": "https://www.bbc.co.uk/sport",
+        "story_url": "https://www.bbc.co.uk/posts"
+      }
+    },
+    {
+      "model": "services.Service",
+      "fields": {
+        "name": "Entertainment Weekly",
+        "slug": "entertainment-weekly",
+        "url": "https://ew.com/",
+        "story_url": "https://ew.com/"
+      }
+    },
+]
   
