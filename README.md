@@ -9,8 +9,7 @@
 * [Amey Ghate](https://github.com/amey-ghate)
 * [Shreya Sagar](https://github.com/shreya1706) 
 * [Vishwa Seth](https://github.com/Vishwa-Sheth)
-## [Installation]()
-## [Setting Environments](.#How-to-install-Virtual-Environments)
+******
 ### Instructions For Execution the App.
 ## Running Locally
 
@@ -93,7 +92,7 @@ The site will be available at **127.0.0.1:8000**.
 
 
 ****** 
-### How to install Virtual Environments
+###How to install Virtual Environments
 ### Installing virtualenv
 * On Mac and Linux:
 ```
