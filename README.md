@@ -1,15 +1,5 @@
 # Online-Trending - Apex
 *****
-## Team Members - Developers
-* [Nidhi Gupta](https://github.com/nidhi98gupta)
-* [Raksha Rank](https://github.com/RakshaRank)
-* [Chirag Podar](https://github.com/ChiragPoddar99)
-* [Swapnil Dhimmar](https://github.com/sdhimmar006)
-* [Tikam Alma](https://github.com/Tikam02)
-* [Amey Ghate](https://github.com/amey-ghate)
-* [Shreya Sagar](https://github.com/shreya1706) 
-* [Vishwa Seth](https://github.com/Vishwa-Sheth)
-******
 ### Instructions For Execution the App.
 ## Running Locally
 
@@ -89,9 +79,50 @@ The site will be available at **127.0.0.1:8000**.
 127.0.0.1:8000/logout ---->>>> 
 
 ```
-
-
 ****** 
+### Developers Guide To Contribute
+#### To create a branch from Terminal
+```
+    $ git fetch && git checkout <feature>
+
+    Make your changes locally and then add, commit, and push your changes to the <feature> branch:
+    $ git add .
+    $ git commit -m "adding a change from the feature branch"
+    $ git push origin <feature>
+```
+ 
+
+To create a branch locally
+
+You can create a branch locally as long as you have a cloned version of the repo.
+```
+    From your terminal window, list the branches on your repository.
+    $ git branch
+
+    * master
+
+    This output indicates there is a single branch, the master and the asterisk indicates it is currently active.
+    
+    Create a new feature branch in the repository
+    $ git branch <feature_branch>
+
+    Switch to the feature branch to work on it.
+    $ git checkout <feature_branch>
+
+    You can list the branches again with the git branch command.
+
+    Commit the change to the feature branch:
+    $ git add .
+    $ git commit -m "adding a change from the feature branch"
+
+    Switch back to the master branch.
+    $ git checkout master
+    
+    Push the feature branch to Bitbucket:
+    $ git push origin <feature_branch>
+```
+
+*****
 ###How to install Virtual Environments
 ### Installing virtualenv
 * On Mac and Linux:
@@ -123,5 +154,16 @@ source env/bin/activate
 .\env\Scripts\activate
 ```
 ******
+## Team Members - Developers
+* [Nidhi Gupta](https://github.com/nidhi98gupta)
+* [Raksha Rank](https://github.com/RakshaRank)
+* [Chirag Podar](https://github.com/ChiragPoddar99)
+* [Swapnil Dhimmar](https://github.com/sdhimmar006)
+* [Tikam Alma](https://github.com/Tikam02)
+* [Amey Ghate](https://github.com/amey-ghate)
+* [Shreya Sagar](https://github.com/shreya1706) 
+* [Vishwa Seth](https://github.com/Vishwa-Sheth)
+******
 
 
+    
