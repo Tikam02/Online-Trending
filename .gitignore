@@ -102,3 +102,9 @@ ENV/
 # mypy
 .mypy_cache/
 
+
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+*.sqlite3
+.sqlite3
