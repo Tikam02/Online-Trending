@@ -4,8 +4,9 @@
 
 {% block stylesheet %}
   <link href="{% static 'css/registration.css' %}" rel="stylesheet">
+  <link rel="stylesheet"  href=" {% static 'css/register.css' %}" >
 {% endblock %}
-
+ 
 {% block javascript %}
   <script>
     $(function () {
@@ -17,16 +18,25 @@
 {% block menu %}{% endblock %}
 
 {% block content %}
-  <h2>Login</h2>
+<div id="container-login" >
+  <h2 id="title">
+   <img src="{% static 'img/lock.png' %}" id="invert">
+	Login
+  </h2>
   <form method="post">
+  	<div style="color: #D0D0D0; font-size:  20px; ">
     {% csrf_token %}
     {% include 'includes/form.html' %}
+    </div>
     <div>
-      <button type="submit">Login</button>
+      <button type="submit" id="submit">Login</button>
+  </div>
+  <div>
       <a href="#">Forgot your password?</a>
     </div>
     <div>
       <span>Don't have an account? <a href="{% url 'signup' %}">Signup</a></span>
     </div>
   </form>
+</div>
 {% endblock %}
