@@ -87,8 +87,8 @@ The site will be available at **127.0.0.1:8000**.
 
     Make your changes locally and then add, commit, and push your changes to the <feature> branch:
     $ git add .
-    $ git commit -m "adding a change from the feature branch"
-    $ git push origin <feature>
+    $ git commit -m "adding a change from the dev"
+    $ git push origin dev
 ```
  
 
@@ -98,16 +98,16 @@ You can create a branch locally as long as you have a cloned version of the repo
 ```
     From your terminal window, list the branches on your repository.
     $ git branch
-
-    * master
+    dev
+    *master
 
     This output indicates there is a single branch, the master and the asterisk indicates it is currently active.
     
     Create a new feature branch in the repository
-    $ git branch <feature_branch>
+    $ git branch dev
 
     Switch to the feature branch to work on it.
-    $ git checkout <feature_branch>
+    $ git checkout dev
 
     You can list the branches again with the git branch command.
 
@@ -119,7 +119,7 @@ You can create a branch locally as long as you have a cloned version of the repo
     $ git checkout master
     
     Push the feature branch to Bitbucket:
-    $ git push origin <feature_branch>
+    $ git push origin dev
 ```
 
 *****
