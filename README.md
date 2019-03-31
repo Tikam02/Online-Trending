@@ -1,8 +1,16 @@
 # Online-Trending - Apex
 *****
-### Instructions For Execution the App.
-## Running Locally
+### [Installation](#project-installation-and-running-locally)
+### [Contribution And Development](#developers-guide-to-contribute)
+### [Web Application Structure](#webapp-structure)
+### [Setting Up Project Environments](#setting-up-virtual-environments)
+### [Team Members](#team-members)
 
+
+
+******
+
+### Project Installation And Running Locally
 First, clone the repository to your local machine:
 
 ```
@@ -67,7 +75,7 @@ python manage.py crawl reddit
 The site will be available at **127.0.0.1:8000**.
 
 ***** 
-# Web Pages Links
+# WebApp Structure
 ```
 127.0.0.1:8000/login  ----->>>> Login Page
 127.0.0.1:8000/signup ---->>>> Sign Up Page
@@ -123,7 +131,7 @@ You can create a branch locally as long as you have a cloned version of the repo
 ```
 
 *****
-###How to install Virtual Environments
+### Setting Up Virtual Environments
 ### Installing virtualenv
 * On Mac and Linux:
 ```
@@ -154,7 +162,7 @@ source env/bin/activate
 .\env\Scripts\activate
 ```
 ******
-## Team Members - Developers
+## Team Members 
 * [Nidhi Gupta](https://github.com/nidhi98gupta)
 * [Raksha Rank](https://github.com/RakshaRank)
 * [Chirag Podar](https://github.com/ChiragPoddar99)
