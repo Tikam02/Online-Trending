@@ -36,6 +36,7 @@
       {% if user.is_authenticated %}
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
           <a href="{% url 'logout' %}">logout</a></nav>
+          <a href="{% url 'bookmarks' %}">See Bookmarks</a><nav>
       {% else %}
         <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
       {% endif %}
