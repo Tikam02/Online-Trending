@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from django.db import models
+from django.contrib.auth.models import User
 
 class Service(models.Model):
     GOOD = 'G'
@@ -100,6 +101,9 @@ class Story(models.Model):
             'description': self.description
         }
 
+    def get_bookmark_count(self):
+        return self.bookmarkarticle_set.all().count()
+
 
 class StoryUpdate(models.Model):
     story = models.ForeignKey(Story, related_name='updates', on_delete=models.CASCADE)
@@ -114,3 +118,19 @@ class StoryUpdate(models.Model):
 
     def __str__(self):
         return self.story.code
+
+
+class BookmarkArticle(models.Model):
+    class Meta:
+        db_table = "bookmark_article"
+
+    user = models.ForeignKey(User, verbose_name="User", on_delete=models.CASCADE)
+    obj = models.ForeignKey(Story, verbose_name="story", on_delete=models.CASCADE)
+    def __str__(self):
+        return self.user.name
+
+    def is_bookmarked(self):
+        if BookmarkArticle.objects.all().filter(user = user):
+            return True
+        else:
+            return False

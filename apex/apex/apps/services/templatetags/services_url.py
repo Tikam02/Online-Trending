@@ -36,3 +36,10 @@ def services_url_name(slug, delta):
 @register.simple_tag
 def services_url_month_name():
     return timezone.now().strftime('%B').lower()
+
+
+@ register.filter('user_in')
+def user_in (objects, user):
+     if user.is_authenticated:
+         return objects.filter (user = user) .exists ()
+     return False
