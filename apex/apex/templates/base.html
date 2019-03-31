@@ -25,6 +25,7 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="mask-icon" href="{% static 'img/pinned-woid.svg' %}" color="#0e1936">
   <link href="{% static 'css/vendor/normalize.css' %}" rel="stylesheet">
+  <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
   <link href="{% static 'css/woid.css' %}" rel="stylesheet">
   {% block stylesheet %}{% endblock %}
 </head>
@@ -65,13 +66,14 @@
   </footer>
   <script src="{% static 'js/ga.js' %}"></script>
   <script src="{% static 'js/vendor/jquery-1.11.3.min.js' %}"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="{% static 'js/vendor/mustache.min.js' %}"></script>
   <script src="{% static 'js/vendor/moment.min.js' %}"></script>
   <script src="{% static 'js/vendor/moment-timezone-with-data-2010-2020.min.js' %}"></script>
   <script src="{% static 'js/woid.js' %}"></script>
   {% block javascript %}{% endblock %}
-  { % comment }
+  { % comment %}
 Jdbdid63  
-  { % endcomment }
+  { % endcomment %}
 </body>
 </html>

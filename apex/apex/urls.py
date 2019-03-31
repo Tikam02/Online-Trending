@@ -25,6 +25,10 @@ from django.views.generic.edit import CreateView
 from apex.apps.core import views as core_views
 from apex.apps.services import views as services_views
 
+from django.conf.urls import url
+from django.contrib.auth.decorators import login_required
+from apex.apps.services.models import BookmarkArticle
+
 urlpatterns = [
     path('', services_views.front_page, name='front_page'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
@@ -39,6 +43,10 @@ urlpatterns = [
     path('terms/', TemplateView.as_view(template_name='core/terms.html'), name='terms'),
     path('bookmarks/',TemplateView.as_view(template_name='bookmarks.html'),name='bookmarks'),
     path('<slug:slug>/', include('apex.apps.services.urls', namespace='services')),
+    path('<pk>/bookmark/',services_views.BookmarkView.as_view(model=BookmarkArticle),
+        name='article_bookmark'),
+    # url('bbc-sport/article/(?P<pk>\d+)/bookmark/',services_views.BookmarkView.as_view(model=BookmarkArticle),
+    #     name='article_bookmark'),
 ]
 
 if settings.DEBUG:
@@ -52,4 +60,5 @@ if settings.DEBUG:
             path('__debug__/', include(debug_toolbar.urls)),
         ] + urlpatterns
     except ImportError:
+        print()
         pass

@@ -10,8 +10,14 @@ from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 from django.views.decorators.cache import cache_page
 
-from apex.apps.services.models import Service, Story
+from apex.apps.services.models import Service, Story, BookmarkArticle
 from apex.apps.services.utils import remove_duplicates
+
+import json
+
+from django.contrib import auth
+from django.http import HttpResponse
+from django.views import View
 
 
 def stories(request, service, queryset, subtitle):
@@ -131,3 +137,26 @@ def archive(request, slug):
             'service': service,
             'archive': archive
         })
+
+
+class BookmarkView(View):
+    # This variable will set the bookmark model to be processed
+    model = None
+
+    def post(self, request, pk):
+        # We need a user
+        user = auth.get_user(request)
+        # Trying to get a bookmark from the table, or create a new one
+        bookmark, created = self.model.objects.get_or_create(user=user, obj_id=pk)
+        # If no new bookmark has been created,
+        # Then we believe that the request was to delete the bookmark
+        if not created:
+            bookmark.delete()
+
+        return HttpResponse(
+            json.dumps({
+                "result": created,
+                "count": self.model.objects.filter(obj_id=pk).count()
+            }),
+            content_type="application/json"
+        )

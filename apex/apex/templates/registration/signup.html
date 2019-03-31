@@ -4,6 +4,7 @@
 
 {% block stylesheet %}
   <link href="{% static 'css/registration.css' %}" rel="stylesheet">
+  <link rel="stylesheet"  href=" {% static 'css/register.css' %}" >
 {% endblock %}
 
 {% block javascript %}
@@ -17,13 +18,20 @@
 {% block menu %}{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% include 'includes/form.html' %}
-    <div>
-      <button type="submit">Create an account</button>
-      <span>Already have an account? <a href="{% url 'login' %}">Login</a></span>
-    </div>
-  </form>
+<div id="container-signup" >
+  <h2 id="title">
+   <img src="{% static 'img/lock.png' %}" id="invert_s">
+    Sign Up
+  </h2>
+  <div id="form" style="color: #D0D0D0; font-size:  17px; ">
+    <form method="post">
+      {% csrf_token %}
+      {% include 'includes/form.html' %}
+      <div>
+        <button type="submit" id="submit" >Create an account</button>
+        <span id="having_account">Already have an account? <a href="{% url 'login' %}">Login</a></span>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
