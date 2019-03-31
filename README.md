@@ -5,6 +5,7 @@
 ### [Web Application Structure](#webapp-structure)
 ### [Setting Up Project Environments](#setting-up-virtual-environments)
 ### [Team Members](#team-members)
+### [Git Tutorial](https://www.atlassian.com/git/tutorials/what-is-version-control) 
 
 
 
@@ -89,9 +90,12 @@ The site will be available at **127.0.0.1:8000**.
 ```
 ****** 
 ### Developers Guide To Contribute
+
+#### Make Sure That you know proper Git commands before Contributing to thise project, if don't then this tutorial will help.
+### [Git Tutorial](https://www.atlassian.com/git/tutorials/what-is-version-control) 
 #### To create a branch from Terminal
 ```
-    $ git fetch && git checkout <feature>
+    $ git fetch && git checkout dev
 
     Make your changes locally and then add, commit, and push your changes to the <feature> branch:
     $ git add .
@@ -121,14 +125,24 @@ You can create a branch locally as long as you have a cloned version of the repo
 
     Commit the change to the feature branch:
     $ git add .
-    $ git commit -m "adding a change from the feature branch"
+    $ git commit -m "adding a change to the dev branch"
 
+    Push the dev branch to Repository
+    $ git push origin dev
+    
     Switch back to the master branch.
     $ git checkout master
     
-    Push the feature branch to Bitbucket:
-    $ git push origin dev
 ```
+
+### To Revert The commited Files 
+```
+ git revert <commit-id> 
+ git reset 
+ git add <path> 
+ git commit ... 
+ git reset --hard # making sure you didn't have uncommited changes earlier
+ ```
 
 *****
 ### Setting Up Virtual Environments
