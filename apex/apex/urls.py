@@ -24,6 +24,7 @@ from django.views.generic.edit import CreateView
 
 from apex.apps.core import views as core_views
 from apex.apps.services import views as services_views
+from apex.templates.services.includes import views as B_view
 
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
@@ -42,7 +43,7 @@ urlpatterns = [
     path('privacy/', TemplateView.as_view(template_name='core/privacy.html'), name='privacy'),
     path('FAQ/', TemplateView.as_view(template_name='core/FAQ.html'), name='FAQ'),
     path('terms/', TemplateView.as_view(template_name='core/terms.html'), name='terms'),
-    path('bookmarks/',TemplateView.as_view(template_name='bookmarks.html'),name='bookmarks'),
+    path('bookmarks/',B_view.BookmarksView.as_view(),name='bookmarks'),
     path('<slug:slug>/', include('apex.apps.services.urls', namespace='services')),
     path('<pk>/bookmark/',services_views.BookmarkView.as_view(model=BookmarkArticle),
         name='article_bookmark'),
