@@ -40,6 +40,7 @@ urlpatterns = [
     path('status/', core_views.status, name='status'),
     path('cookies/', TemplateView.as_view(template_name='core/cookies.html'), name='cookies'),
     path('privacy/', TemplateView.as_view(template_name='core/privacy.html'), name='privacy'),
+    path('FAQ/', TemplateView.as_view(template_name='core/FAQ.html'), name='FAQ'),
     path('terms/', TemplateView.as_view(template_name='core/terms.html'), name='terms'),
     path('bookmarks/',TemplateView.as_view(template_name='bookmarks.html'),name='bookmarks'),
     path('<slug:slug>/', include('apex.apps.services.urls', namespace='services')),
