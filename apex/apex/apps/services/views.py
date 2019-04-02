@@ -5,11 +5,13 @@ from itertools import groupby
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Sum, Min
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, render_to_response
+from django.template.context_processors import csrf
 from django.utils import timezone
 from django.views.decorators.cache import cache_page
 
+from apex.apps.services.forms import RegistrationForm
 from apex.apps.services.models import Service, Story, BookmarkArticle
 from apex.apps.services.utils import remove_duplicates
 
@@ -138,6 +140,20 @@ def archive(request, slug):
             'archive': archive
         })
 
+
+def register_user(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+
+    args = {}
+    args.update(csrf(request))
+
+    args['form'] = RegistrationForm()
+
+    return render_to_response('registration/signup.html', args)
 
 class BookmarkView(View):
     # This variable will set the bookmark model to be processed

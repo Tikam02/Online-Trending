@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from django.db import models
+from apex.apps.services import forms
 from django.contrib.auth.models import User
 
 class Service(models.Model):
@@ -130,7 +131,7 @@ class BookmarkArticle(models.Model):
         return self.user.name
 
     def is_bookmarked(self):
-        if BookmarkArticle.objects.all().filter(user = user):
+        if BookmarkArticle.objects.all().filter(user = forms.RegistrationForm.user):
             return True
         else:
             return False
