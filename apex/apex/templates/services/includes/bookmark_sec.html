@@ -1,0 +1,11 @@
+{% load services_url %}
+<div data-id="{{ story.id }}" data-type="article" data-action="bookmark" title="Favorites">
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-link">
+      {% if story.bookmarkarticle_set.all|user_in:user %}
+      <span class="star glyphicon glyphicon-star"></span></button>
+      {% else %}
+      <span class="star glyphicon glyphicon-star-empty"></span></button>
+      {% endif %}
+    {% endif %}
+</div>
