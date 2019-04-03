@@ -188,3 +188,7 @@ def feedbackView(request):
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
+
+
+def aboutView(request):
+    return render(request,'about_us.html')

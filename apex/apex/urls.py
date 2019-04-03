@@ -23,7 +23,7 @@ from django.views.generic.edit import CreateView
 from apex.apps.core import views as core_views
 from apex.apps.services import views as services_views
 from apex.apps.services.models import BookmarkArticle
-from apex.apps.services.views  import successView, feedbackView
+from apex.apps.services.views  import successView, feedbackView, aboutView
 
 urlpatterns = [
     path('', services_views.front_page, name='front_page'),
@@ -32,6 +32,7 @@ urlpatterns = [
     path('signup/', CreateView.as_view(template_name='registration/signup.html',form_class=UserCreationForm,success_url='/'), name='signup'),
     path('feedback/', services_views.feedbackView,name='feedback'),
     path('success/', successView, name='success'),
+    path('about/',aboutView,name='about'),
     path('about/', TemplateView.as_view(template_name='core/about.html'), name='about'),
     path('status/', core_views.status, name='status'),
     path('cookies/', TemplateView.as_view(template_name='core/cookies.html'), name='cookies'),

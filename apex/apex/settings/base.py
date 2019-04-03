@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'apex.apps.accounts',
     'apex.apps.core',
     'apex.apps.services',
+     'widget_tweaks',
 ]
 
 ROOT_URLCONF = 'apex.urls'
