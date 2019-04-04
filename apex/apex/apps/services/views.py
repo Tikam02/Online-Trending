@@ -12,7 +12,7 @@ from django.utils import timezone
 from django.views.decorators.cache import cache_page
 
 from apex.apps.services.forms import RegistrationForm
-from apex.apps.services.models import Service, Story, BookmarkArticle
+from apex.apps.services.models import Service, Story, BookmarkArticle,FeedbackModel
 from apex.apps.services.utils import remove_duplicates
 
 import json
@@ -20,6 +20,11 @@ import json
 from django.contrib import auth
 from django.http import HttpResponse
 from django.views import View
+
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .forms import FeedbackForm
 
 
 def stories(request, service, queryset, subtitle):
@@ -176,3 +181,30 @@ class BookmarkView(View):
             }),
             content_type="application/json"
         )
+
+
+def feedbackView(request):
+    if request.method == 'GET':
+        form  = FeedbackForm()
+    else:
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            feedbackmodel = FeedbackModel.objects.create(name=name,email=email,subject=subject,message=message)
+            try:
+                send_mail(message,subject,email,['tikamalma1@gmail.com'])
+            except BadHeaderError:
+                return  HttpResponse('Invalid Header Found')
+            return redirect('success')
+    return render(request,'feedback.html',{'form':form})
+
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')
+
+
+def aboutView(request):
+    return render(request,'about_us.html')

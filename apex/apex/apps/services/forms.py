@@ -16,3 +16,14 @@ class RegistrationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+
+
+class FeedbackForm(forms.Form):
+    name = forms.CharField(max_length=200)
+    email = forms.EmailField(required=True)
+    subject = forms.CharField(max_length=200)
+    message = forms.CharField(max_length=2000,widget=forms.Textarea(),help_text='Write here your message!')
+
+

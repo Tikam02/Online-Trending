@@ -13,14 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 from django.views.generic.edit import CreateView
-
 from apex.apps.core import views as core_views
 from apex.apps.services import views as services_views
 from apex.templates.services.includes import views as B_view
@@ -28,12 +26,16 @@ from apex.templates.services.includes import views as B_view
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from apex.apps.services.models import BookmarkArticle
+from apex.apps.services.views  import successView, feedbackView, aboutView
 
 urlpatterns = [
     path('', services_views.front_page, name='front_page'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('signup/', services_views.register_user, name='signup'),
+    path('feedback/', services_views.feedbackView, name='feedback'),
+    path('success/', successView, name='success'),
+    path('about/', aboutView, name='about'),
     path('about/', TemplateView.as_view(template_name='core/about.html'), name='about'),
     path('status/', core_views.status, name='status'),
     path('cookies/', TemplateView.as_view(template_name='core/cookies.html'), name='cookies'),

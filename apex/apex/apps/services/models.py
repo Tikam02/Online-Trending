@@ -135,3 +135,9 @@ class BookmarkArticle(models.Model):
             return True
         else:
             return False
+
+class FeedbackModel(models.Model):
+    name    =   models.CharField(max_length=200)
+    email   =   models.CharField(max_length=200)
+    subject =  models.CharField(max_length=200)
+    message =  models.CharField(max_length=20000)
