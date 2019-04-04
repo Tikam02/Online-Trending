@@ -203,8 +203,11 @@ def feedbackView(request):
 
 
 def successView(request):
-    return HttpResponse('Success! Thank you for your message.')
+    return HttpResponse(render(request,'success.html'))
 
 
 def aboutView(request):
     return render(request,'about_us.html')
+
+def searchView(request):
+   return render(request,'search_posts.html')

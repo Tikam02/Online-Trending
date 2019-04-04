@@ -32,7 +32,9 @@
 <body>
   <div class="wrapper">
     <header>
+
       <a href="{% url 'front_page' %}">apex</a>
+
       {% if user.is_authenticated %}
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
           <a href="{% url 'logout' %}">logout</a></nav>
@@ -40,9 +42,15 @@
       {% else %}
         <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
       {% endif %}
-      <nav>&nbsp;</nav>
+      <nav>&nbsp;
+      {% block search %}
+
+        {% include 'search_posts.html' %}
+        {% endblock %}
+      </nav>
     </header>
     <main>
+
     {% for message in messages %}
       <div class="alert alert-{{ message.tags }}">
         <a href="javascript:void(0);" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
