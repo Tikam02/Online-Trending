@@ -20,28 +20,10 @@
     {
       "model": "services.Service",
       "fields": {
-        "name": "GitHub",
-        "slug": "github",
-        "url": "https://github.com/trending",
-        "story_url": "https://github.com"
-      }
-    },
-    {
-      "model": "services.Service",
-      "fields": {
         "name": "New York Times",
         "slug": "nytimes",
         "url": "http://www.nytimes.com/most-popular-viewed",
         "story_url": "http://nytimes.com"
-      }
-    },
-    {
-      "model": "services.Service",
-      "fields": {
-        "name": "Product Hunt",
-        "slug": "producthunt",
-        "url": "https://www.producthunt.com",
-        "story_url": "https://www.producthunt.com/posts/"
       }
     },
     {
@@ -70,6 +52,6 @@
         "url": "https://ew.com/",
         "story_url": "https://ew.com/"
       }
-    },
+    }
 ]
   

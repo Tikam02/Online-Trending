@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'apex.apps.accounts',
     'apex.apps.core',
     'apex.apps.services',
+     'widget_tweaks',
 ]
 
 ROOT_URLCONF = 'apex.urls'
@@ -175,8 +176,6 @@ CACHES = {
 
 NYTIMES_API_KEY = config('NYTIMES_API_KEY', default='7txQr6vATslGYYoGh7pZ7ZD424T77cQD')
 
-PRODUCT_HUNT_TOKEN = config('PRODUCT_HUNT_TOKEN', default='')
-
 GOOGLE_NEWS_KEY=config('GOOGLE_NEWS_KEY',default='ffb8a867858a410cb805e3cd7e6134fd')
 
 BBC_SPORT_KEY=config('BBC_SPORT_KEY',default='ffb8a867858a410cb805e3cd7e6134fd')
@@ -184,3 +183,6 @@ BBC_SPORT_KEY=config('BBC_SPORT_KEY',default='ffb8a867858a410cb805e3cd7e6134fd')
 ENTERTAINMENT_KEY=config('ENTERTAINMENT_KEY',default='ffb8a867858a410cb805e3cd7e6134fd')
 
 BUSINESS_KEY=config('BUSINESS_KEY',default='ffb8a867858a410cb805e3cd7e6134fd')
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

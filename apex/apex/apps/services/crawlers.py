@@ -138,63 +138,63 @@ class RedditCrawler(AbstractBaseCrawler):
             logger.exception('An error occurred while executing `update_top_stores` for Reddit.')
             raise
 
-class GithubCrawler(AbstractBaseCrawler):
-
-    def __init__(self):
-        super().__init__('github', wrappers.GithubClient())
-
-    def update_top_stories(self):
-        try:
-            repos = self.client.get_today_trending_repositories()
-            today = timezone.now()
-
-            for data in repos:
-                story, created = Story.objects.get_or_create(
-                    service=self.service,
-                    code=data.get('name'),
-                    date=timezone.datetime(today.year, today.month, today.day, tzinfo=timezone.get_current_timezone())
-                )
-
-                if created:
-                    story.build_url()
-
-                stars = data.get('stars', 0)
-
-                # Because of the nature of the github trending repositories
-                # we are only interested on changes where the stars have increased
-                # this way the crawler is gonna campure the highest starts one repository
-                # got in a single day
-                has_changes = (stars > story.score)
-
-                if story.status == Story.NEW:
-                    story.score = stars
-
-                elif has_changes:
-                    # update = StoryUpdate(story=story)
-
-                    # update.score_changes = stars - story.score
-
-                    # update.save()
-
-                    story.score = stars
-
-                story.title = data.get('name')[1:]
-                description = data.get('description', '')
-                language = data.get('language', '')
-
-                if language and description:
-                    description = '{0} • {1}'.format(language, description)
-
-                elif language:
-                    description = language
-
-                story.description = description
-                story.status = Story.OK
-                story.save()
-
-        except Exception:
-            logger.exception('An error occurred while executing `update_top_stores` for GitHub.')
-            raise
+# class GithubCrawler(AbstractBaseCrawler):
+#
+#     def __init__(self):
+#         super().__init__('github', wrappers.GithubClient())
+#
+#     def update_top_stories(self):
+#         try:
+#             repos = self.client.get_today_trending_repositories()
+#             today = timezone.now()
+#
+#             for data in repos:
+#                 story, created = Story.objects.get_or_create(
+#                     service=self.service,
+#                     code=data.get('name'),
+#                     date=timezone.datetime(today.year, today.month, today.day, tzinfo=timezone.get_current_timezone())
+#                 )
+#
+#                 if created:
+#                     story.build_url()
+#
+#                 stars = data.get('stars', 0)
+#
+#                 # Because of the nature of the github trending repositories
+#                 # we are only interested on changes where the stars have increased
+#                 # this way the crawler is gonna campure the highest starts one repository
+#                 # got in a single day
+#                 has_changes = (stars > story.score)
+#
+#                 if story.status == Story.NEW:
+#                     story.score = stars
+#
+#                 elif has_changes:
+#                     # update = StoryUpdate(story=story)
+#
+#                     # update.score_changes = stars - story.score
+#
+#                     # update.save()
+#
+#                     story.score = stars
+#
+#                 story.title = data.get('name')[1:]
+#                 description = data.get('description', '')
+#                 language = data.get('language', '')
+#
+#                 if language and description:
+#                     description = '{0} • {1}'.format(language, description)
+#
+#                 elif language:
+#                     description = language
+#
+#                 story.description = description
+#                 story.status = Story.OK
+#                 story.save()
+#
+#         except Exception:
+#             logger.exception('An error occurred while executing `update_top_stores` for GitHub.')
+#             raise
 
 class NYTimesCrawler(AbstractBaseCrawler):
     def __init__(self):
@@ -257,35 +257,35 @@ class NYTimesCrawler(AbstractBaseCrawler):
             raise
 
 
-class ProductHuntCrawler(AbstractBaseCrawler):
-    def __init__(self):
-        super().__init__('producthunt', wrappers.ProductHuntClient())
-
-    def update_top_stories(self):
-        try:
-            posts = self.client.get_top_posts()
-            today = timezone.now()
-            for post in posts:
-                code = post['slug']
-                story, created = Story.objects.get_or_create(
-                    service=self.service,
-                    code=code,
-                    date=timezone.datetime(today.year, today.month, today.day, tzinfo=timezone.get_current_timezone())
-                )
-
-                if created:
-                    story.title = post['name']
-                    story.description = post['tagline']
-                    story.url = u'{0}{1}'.format(self.service.story_url, code)
-
-                story.score = post['votes_count']
-                story.comments = post['comments_count']
-                story.status = Story.OK
-                story.save()
-
-        except Exception:
-            logger.exception('An error occurred while executing `update_top_stores` for Product Hunt.')
-            raise
+# class ProductHuntCrawler(AbstractBaseCrawler):
+#     def __init__(self):
+#         super().__init__('producthunt', wrappers.ProductHuntClient())
+#
+#     def update_top_stories(self):
+#         try:
+#             posts = self.client.get_top_posts()
+#             today = timezone.now()
+#             for post in posts:
+#                 code = post['slug']
+#                 story, created = Story.objects.get_or_create(
+#                     service=self.service,
+#                     code=code,
+#                     date=timezone.datetime(today.year, today.month, today.day, tzinfo=timezone.get_current_timezone())
+#                 )
+#
+#                 if created:
+#                     story.title = post['name']
+#                     story.description = post['tagline']
+#                     story.url = u'{0}{1}'.format(self.service.story_url, code)
+#
+#                 story.score = post['votes_count']
+#                 story.comments = post['comments_count']
+#                 story.status = Story.OK
+#                 story.save()
+#
+#         except Exception:
+#             logger.exception('An error occurred while executing `update_top_stores` for Product Hunt.')
+#             raise
                             
 class GoogleNewsCrawler(AbstractBaseCrawler):
     def __init__(self):

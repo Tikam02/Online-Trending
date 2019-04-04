@@ -1,4 +1,4 @@
-{% load services_url %}
+
 <li>
   <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" style="font-size:25px">{{ story.title }}</a>
   {% if story.nsfw %}
@@ -12,14 +12,5 @@
   </p>
 
   <img src= {{ story.image_url }} alt="We could not display the image" height=150>
-  <div data-id="{{ story.id }}" data-type="article" data-action="bookmark" title="Favorites">
-    {% if user.is_authenticated %}
-    <button type="button" class="btn btn-link">
-      {% if story.bookmarkarticle_set.all|user_in:user %}
-      <span class="star glyphicon glyphicon-star"></span></button>
-      {% else %}
-      <span class="star glyphicon glyphicon-star-empty"></span></button>
-      {% endif %}
-    {% endif %}
-  </div>
+  {% include 'services/includes/bookmark_sec.html' %}
 </li>

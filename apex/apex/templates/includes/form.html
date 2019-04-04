@@ -16,7 +16,7 @@
     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
     {{ field }}
     {% if field.help_text %}
-      <span>{{ field.help_text }}</span>
+     {% comment %}<span>{{ field.help_text }}</span>{% endcomment %}
     {% endif %}
     {% if field.errors %}
       <ul>

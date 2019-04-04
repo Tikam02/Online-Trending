@@ -13,38 +13,48 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import urls as url_views
 from django.urls import include, path
 from django.views.generic.edit import CreateView
-
 from apex.apps.core import views as core_views
 from apex.apps.services import views as services_views
+from apex.templates.services.includes import views as B_view
 
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from apex.apps.services.models import BookmarkArticle
+from apex.apps.services.views  import successView, feedbackView, aboutView
 
 urlpatterns = [
     path('', services_views.front_page, name='front_page'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
-    path('signup/', CreateView.as_view(template_name='registration/signup.html',
-                                       form_class=UserCreationForm,
-                                       success_url='/'), name='signup'),
+    path('signup/', services_views.register_user, name='signup'),
+    path('feedback/', services_views.feedbackView, name='feedback'),
+    path('success/', successView, name='success'),
+    path('about/', aboutView, name='about'),
     path('about/', TemplateView.as_view(template_name='core/about.html'), name='about'),
     path('status/', core_views.status, name='status'),
     path('cookies/', TemplateView.as_view(template_name='core/cookies.html'), name='cookies'),
     path('privacy/', TemplateView.as_view(template_name='core/privacy.html'), name='privacy'),
+    path('FAQ/', TemplateView.as_view(template_name='core/FAQ.html'), name='FAQ'),
     path('terms/', TemplateView.as_view(template_name='core/terms.html'), name='terms'),
-    path('bookmarks/',TemplateView.as_view(template_name='bookmarks.html'),name='bookmarks'),
+    path('bookmarks/',B_view.BookmarksView.as_view(),name='bookmarks'),
     path('<slug:slug>/', include('apex.apps.services.urls', namespace='services')),
     path('<pk>/bookmark/',services_views.BookmarkView.as_view(model=BookmarkArticle),
         name='article_bookmark'),
+    # url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
+    # url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
+    # url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    #     auth_views.password_reset_confirm, name='password_reset_confirm'),
+    # url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
+
+    path('accounts/', include('django.contrib.auth.urls')),
+    #path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     # url('bbc-sport/article/(?P<pk>\d+)/bookmark/',services_views.BookmarkView.as_view(model=BookmarkArticle),
     #     name='article_bookmark'),
 ]

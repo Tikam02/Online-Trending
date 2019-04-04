@@ -13,8 +13,6 @@ class Command(BaseCommand):
         crawlers_classes = {
             'reddit': crawlers.RedditCrawler,
             'hn': crawlers.HackerNewsCrawler,
-            'producthunt': crawlers.ProductHuntCrawler,
-            'github': crawlers.GithubCrawler,
             'nytimes': crawlers.NYTimesCrawler,
             'google-news': crawlers.GoogleNewsCrawler,
             'bbc-sport': crawlers.BBCSportCrawler,
@@ -33,13 +31,6 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.ERROR(
                     'The nytimes crawler is missing API Key. '
                     'Read more: https://github.com/vitorfs/woid#the-new-york-times'
-                ))
-                continue
-
-            if slug == 'producthunt' and not settings.PRODUCT_HUNT_TOKEN:
-                self.stdout.write(self.style.ERROR(
-                    'The producthunt crawler is missing API Key. '
-                    'Read more: https://github.com/vitorfs/woid#product-hunt'
                 ))
                 continue
 

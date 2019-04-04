@@ -1,0 +1,56 @@
+
+#container-login {
+    background-color: #1D1F20;
+    position: relative;
+    top: 20%;
+    margin: auto;
+    width: 340px;
+    height: 445px;
+    border-radius: 0.35em;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+#title {
+	color: #D0D0D0;
+    position: relative;
+    background-color: #1A1C1D;
+    width: 100%;
+    padding: 20px 0px;
+    border-radius: 0.35em;
+    font-size: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align : center;
+}
+#invert{
+	filter: invert(89%);
+	height: 20px;
+  	width: 5%;
+  	background-color: #1A1C1D;
+}
+#submit{
+	text-align: center;
+	background-color: #373b3d;
+	color: #D0D0D0;
+	font-size: 15px;
+	font-weight:bold;
+}
+#container-signup {
+    background-color: #1D1F20;
+    position: relative;
+    top: 20%;
+    margin: auto 10%;
+    border-radius: 0.35em;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+#invert_s{
+    filter: invert(89%);
+    height: 22px;
+    width: 20px;
+    background-color: #1A1C1D;
+}
+#form{
+    padding: 0% 0% 2% 4.5% ;
+}
+#having_account{
+    color: #D0D0D0;
+}
