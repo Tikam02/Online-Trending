@@ -102,8 +102,45 @@ The site will be available at **127.0.0.1:8000**.
     $ git commit -m "adding a change from the dev"
     $ git push origin dev
 ```
- 
 
+********
+#### Perfect way to git when doing project with your team.
+When you have made some changes and and your friend has already pushed it and want you  to pull it.
+so, if you pull it git will display first commit your changes or merge the files,that will cause merge conflict.
+You can overcome this by:
+
+Stash your local changes:
+
+```
+git stash
+```
+
+Update the branch to the latest code
+
+```
+git pull origin dev
+```
+
+see your commits from stash 
+```
+git stash show
+```
+
+Merge your local changes into the latest code:
+
+```
+git stash apply
+```
+
+Add, commit and push your changes
+
+```
+git add <files>
+git commit -m "message"
+git push origin dev
+
+```
+******
 To create a branch locally
 
 You can create a branch locally as long as you have a cloned version of the repo.
