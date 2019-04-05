@@ -4,7 +4,7 @@ from apex.apps.services.models import BookmarkArticle
 
 from django.contrib.auth.models import User
 
-from apex.apps.services.models import BookmarkArticle
+from apex.apps.services.models import BookmarkArticle,Service
 
 from django.views import View
 
@@ -17,5 +17,6 @@ class BookmarksView(View):
 	def get(self,request):
 		bookmarks = BookmarkArticle.objects.all()
 		user = auth.get_user(request)
-		context = {'user': user, 'bookmarks': bookmarks }
+		service = Service.objects.all()
+		context = {'user': user, 'bookmarks': bookmarks,'services': service}
 		return render(request,"bookmarks.html",context)
