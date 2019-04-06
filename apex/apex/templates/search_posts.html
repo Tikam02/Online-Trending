@@ -1,6 +1,4 @@
-
-{% block content %}
-<form action="/hms/accommodations" method="GET">
+<form action="{% url 'search' %}" method="GET" value="{{ request.GET.q }}">
   <div class="row">
     <div class="col-xs-6 col-md-4">
       <div class="input-group">
@@ -9,9 +7,10 @@
                 class="form-control"
                 placeholder="Search"
                 id="txtSearch"
-                name = "search"/>
+                name = "q"
+                value="{{request.GET.q}}"/>
         <div class="input-group-btn">
-          <button class="btn btn-primary" type="submit">
+          <button class="btn btn-primary" type="submit" name="submit" value="Search">
             <span class="glyphicon glyphicon-search"></span>
           </button>
         </div>
@@ -19,4 +18,4 @@
     </div>
   </div>
 </form>
-{% endblock %}
+

@@ -25,7 +25,7 @@ from apex.templates.services.includes import views as B_view
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from apex.apps.services.models import BookmarkArticle
-from apex.apps.services.views  import successView, feedbackView, aboutView, searchView
+from apex.apps.services.views  import successView, feedbackView, aboutView, searchView, searchResultView
 
 urlpatterns = [
     path('', services_views.front_page, name='front_page'),
@@ -34,6 +34,7 @@ urlpatterns = [
     path('signup/', services_views.register_user, name='signup'),
     path('feedback/', services_views.feedbackView, name='feedback'),
     path('success/', successView, name='success'),
+    path('search_result/',searchResultView,name='search_result'),
     path('about/', aboutView, name='about'),
     path('search/',searchView,name='search'),
     path('about/', TemplateView.as_view(template_name='core/about.html'), name='about'),

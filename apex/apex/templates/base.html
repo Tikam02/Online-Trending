@@ -34,20 +34,21 @@
     <header>
 
       <a href="{% url 'front_page' %}">Home</a>
+      {% block search %}
+
+        {% include 'search_posts.html' %}
+        {% endblock %}
 
       {% if user.is_authenticated %}
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
           <a href="{% url 'password_change' %}">Change Password</a></nav>
           <a href="{% url 'logout' %}">logout</a></nav>
-          <a href="{% url 'bookmarks' %}">See Bookmarks</a><nav>
+          <a href="{% url 'bookmarks' %}">See Bookmarks</a>
       {% else %}
         <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
       {% endif %}
-      <nav>&nbsp;
-      {% block search %}
+      <nav>
 
-        {% include 'search_posts.html' %}
-        {% endblock %}
       </nav>
     </header>
     <main>

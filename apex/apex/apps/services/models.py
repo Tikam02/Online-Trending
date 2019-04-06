@@ -141,3 +141,14 @@ class FeedbackModel(models.Model):
     email   =   models.CharField(max_length=200)
     subject =  models.CharField(max_length=200)
     message =  models.CharField(max_length=20000)
+
+
+class PostModel(models.Model):
+    title= models.CharField(max_length=300)
+    slug= models.SlugField(max_length=300, unique=True, blank=True)
+    content= models.TextField()
+
+
+
+    def __str__(self):
+        return self.title
