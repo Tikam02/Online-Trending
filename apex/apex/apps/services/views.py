@@ -84,7 +84,6 @@ def front_page(request):
 @cache_page(60)
 def index(request, slug):
     today = timezone.now()
-    print('oijoi')
     return day(request, slug, today.year, today.month, today.day)
 
 

@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block javascript %}
+  <script src="{% static 'js/services/stories.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 
@@ -10,30 +14,9 @@
   {% for story in bookmarks %}
     {% if story.user.id == user.id %}
     {% if story.obj.service.slug == service.slug %}
-       <a href="{{ story.obj.url }}" target="_blank" rel="nofollow noopener" style="font-size:25px">{{ story.obj.title }}</a>
-       {% if story.obj.score > 0 %}
-       {{ story.obj.score }} upvote{{ story.obj.score|pluralize }}
-        &bullet;
-       {% endif %}
-       {% if story.obj.comments > 0 %}
-       {{ story.obj.comments }} comment{{ story.obj.comments|pluralize }}
-        &bullet;
-        {% endif %}
-        {% if story.obj.date is not None %}
-       {{ story.obj.date|date:'M d, Y'|lower }}
-        {% endif %}
-       <p style="font-size:17px">
-        {% if story.obj.description is not None %}
-        {{ story.obj.description }}
-        {% endif %}
-         </p>
-         {% if story.obj.image_url is not None or story.obj.service.slug is not 'reddit' %}
-         <img src= {{ story.obj.image_url }} alt="We could not display the image" height=150>
-         {% endif %}
-          <button type="button" class="btn btn-link">
-            <span class="star glyphicon glyphicon-star"></span></button>
-         <br>
-         <br>
+       {% with story.obj as story %}
+       {% include service.get_story_template %}
+       {% endwith %}
     {% endif %}
     {% endif %}
   {% endfor %}

@@ -184,5 +184,11 @@ ENTERTAINMENT_KEY=config('ENTERTAINMENT_KEY',default='ffb8a867858a410cb805e3cd7e
 
 BUSINESS_KEY=config('BUSINESS_KEY',default='ffb8a867858a410cb805e3cd7e6134fd')
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'testsite_app'
+# EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
