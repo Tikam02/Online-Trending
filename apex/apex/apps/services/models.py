@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from django.db import models
+from apex.apps.services import forms
 from django.contrib.auth.models import User
 
 class Service(models.Model):
@@ -130,7 +131,24 @@ class BookmarkArticle(models.Model):
         return self.user.name
 
     def is_bookmarked(self):
-        if BookmarkArticle.objects.all().filter(user = user):
+        if BookmarkArticle.objects.all().filter(user = forms.RegistrationForm.user):
             return True
         else:
             return False
+
+class FeedbackModel(models.Model):
+    name    =   models.CharField(max_length=200)
+    email   =   models.CharField(max_length=200)
+    subject =  models.CharField(max_length=200)
+    message =  models.CharField(max_length=20000)
+
+
+class PostModel(models.Model):
+    title= models.CharField(max_length=300)
+    slug= models.SlugField(max_length=300, unique=True, blank=True)
+    content= models.TextField()
+
+
+
+    def __str__(self):
+        return self.title

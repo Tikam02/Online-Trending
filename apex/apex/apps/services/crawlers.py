@@ -118,6 +118,7 @@ class RedditCrawler(AbstractBaseCrawler):
 
                 score = story_data.get('score', 0)
                 comments = story_data.get('num_comments', 0)
+                story.image_url = story_data.get('thumbnail')
 
                 # has_changes = (score != story.score or comments != story.comments)
 
@@ -214,6 +215,8 @@ class NYTimesCrawler(AbstractBaseCrawler):
 
         story.title = story_data['title']
         story.url = story_data['url']
+        story.description = story_data['abstract']
+        story.image_url = story_data['media'][0]['media-metadata'][0]['url']
 
         minutes_since_last_update = 0
 

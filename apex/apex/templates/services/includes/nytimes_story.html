@@ -8,5 +8,9 @@
     &bullet;
     {{ story.date|date:'M d, Y'|lower }}
   </p>
+  <p style="font-size:17px">
+    {{ story.description }}
+  </p>
+  <img src= {{ story.image_url }} alt="We could not display the image" height=150>
   {% include 'services/includes/bookmark_sec.html' %}
 </li>

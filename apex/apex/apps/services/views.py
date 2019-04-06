@@ -5,12 +5,14 @@ from itertools import groupby
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Sum, Min
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, render_to_response
+from django.template.context_processors import csrf
 from django.utils import timezone
 from django.views.decorators.cache import cache_page
 
-from apex.apps.services.models import Service, Story, BookmarkArticle
+from apex.apps.services.forms import RegistrationForm
+from apex.apps.services.models import Service, Story, BookmarkArticle,FeedbackModel
 from apex.apps.services.utils import remove_duplicates
 
 import json
@@ -18,6 +20,15 @@ import json
 from django.contrib import auth
 from django.http import HttpResponse
 from django.views import View
+
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from .forms import FeedbackForm
+from django.shortcuts import render
+from django.db.models import Q
+from .models import PostModel
+
 
 
 def stories(request, service, queryset, subtitle):
@@ -77,7 +88,6 @@ def front_page(request):
 @cache_page(60)
 def index(request, slug):
     today = timezone.now()
-    print('oijoi')
     return day(request, slug, today.year, today.month, today.day)
 
 
@@ -139,6 +149,20 @@ def archive(request, slug):
         })
 
 
+def register_user(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+
+    args = {}
+    args.update(csrf(request))
+
+    args['form'] = RegistrationForm()
+
+    return render_to_response('registration/signup.html', args)
+
 class BookmarkView(View):
     # This variable will set the bookmark model to be processed
     model = None
@@ -160,3 +184,57 @@ class BookmarkView(View):
             }),
             content_type="application/json"
         )
+
+
+def feedbackView(request):
+    if request.method == 'GET':
+        form  = FeedbackForm()
+    else:
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            feedbackmodel = FeedbackModel.objects.create(name=name,email=email,subject=subject,message=message)
+            try:
+                send_mail(message,subject,email,['tikamalma1@gmail.com'])
+            except BadHeaderError:
+                return  HttpResponse('Invalid Header Found')
+            return redirect('success')
+    return render(request,'feedback.html',{'form':form})
+
+
+def successView(request):
+    return HttpResponse(render(request,'success.html'))
+
+
+def aboutView(request):
+    return render(request,'about_us.html')
+
+def searchView(request):
+   # return render(request,'search_posts.html')
+    if request.method == 'GET':
+        query= request.GET.get('q')
+
+        submitbutton= request.GET.get('submit')
+
+        if query is not None:
+            lookups= Q(title__icontains=query) | Q(content__icontains=query)
+
+            results= Story.objects.filter(lookups).distinct()
+
+            context={'results': results,
+                     'submitbutton': submitbutton}
+
+            return HttpResponseRedirect(request,'search_result')
+
+        else:
+            return render(request, 'search_posts.html')
+
+    else:
+        return render(request, 'search_posts.html')
+
+
+def searchResultView(request):
+    return render(request,'search_result.html')
