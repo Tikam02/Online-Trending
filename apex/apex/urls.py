@@ -17,9 +17,7 @@ Including another URLconf
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from django.contrib.auth import urls as url_views
 from django.urls import include, path
-from django.views.generic.edit import CreateView
 from apex.apps.core import views as core_views
 from apex.apps.services import views as services_views
 from apex.templates.services.includes import views as B_view
@@ -27,7 +25,7 @@ from apex.templates.services.includes import views as B_view
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from apex.apps.services.models import BookmarkArticle
-from apex.apps.services.views  import successView, feedbackView, aboutView
+from apex.apps.services.views  import successView, feedbackView, aboutView, searchView, searchResultView
 
 urlpatterns = [
     path('', services_views.front_page, name='front_page'),
@@ -37,6 +35,7 @@ urlpatterns = [
     path('feedback/', services_views.feedbackView, name='feedback'),
     path('success/', successView, name='success'),
     path('about/', aboutView, name='about'),
+    path('search/',searchView,name='search'),
     path('about/', TemplateView.as_view(template_name='core/about.html'), name='about'),
     path('status/', core_views.status, name='status'),
     path('cookies/', TemplateView.as_view(template_name='core/cookies.html'), name='cookies'),
@@ -53,7 +52,14 @@ urlpatterns = [
     #     auth_views.password_reset_confirm, name='password_reset_confirm'),
     # url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
 
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
+    path('accounts/password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+
+    path('accounts/password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('accounts/password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('accounts/reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
     #path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     # url('bbc-sport/article/(?P<pk>\d+)/bookmark/',services_views.BookmarkView.as_view(model=BookmarkArticle),
     #     name='article_bookmark'),

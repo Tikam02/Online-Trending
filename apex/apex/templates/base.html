@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Apex{% endblock %}</title>
+  <title>{% block title %}Online Trending{% endblock %}</title>
   <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/apple-touch-icon-57x57.png' %}">
   <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/apple-touch-icon-60x60.png' %}">
   <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
@@ -32,17 +32,27 @@
 <body>
   <div class="wrapper">
     <header>
-      <a href="{% url 'front_page' %}">apex</a>
+
+      <a href="{% url 'front_page' %}">Home</a>
+      {% block search %}
+
+        {% include 'search_posts.html' %}
+        {% endblock %}
+
       {% if user.is_authenticated %}
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
+          <a href="{% url 'password_change' %}">Change Password</a></nav>
           <a href="{% url 'logout' %}">logout</a></nav>
-          <a href="{% url 'bookmarks' %}">See Bookmarks</a><nav>
+          <a href="{% url 'bookmarks' %}">See Bookmarks</a>
       {% else %}
         <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
       {% endif %}
-      <nav>&nbsp;</nav>
+      <nav>
+
+      </nav>
     </header>
     <main>
+
     {% for message in messages %}
       <div class="alert alert-{{ message.tags }}">
         <a href="javascript:void(0);" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>

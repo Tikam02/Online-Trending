@@ -25,6 +25,10 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import FeedbackForm
+from django.shortcuts import render
+from django.db.models import Q
+from .models import PostModel
+
 
 
 def stories(request, service, queryset, subtitle):
@@ -84,7 +88,6 @@ def front_page(request):
 @cache_page(60)
 def index(request, slug):
     today = timezone.now()
-    print('oijoi')
     return day(request, slug, today.year, today.month, today.day)
 
 
@@ -203,8 +206,32 @@ def feedbackView(request):
 
 
 def successView(request):
-    return HttpResponse('Success! Thank you for your message.')
+    return HttpResponse(render(request,'success.html'))
 
 
 def aboutView(request):
     return render(request,'about_us.html')
+
+def searchView(request):
+   # return render(request,'search_posts.html')
+    if request.method == 'GET':
+        query= request.GET.get('q')
+
+        if query:
+            lookups= Q(title__icontains=query) | Q(content__icontains=query)
+
+            results= Story.objects.filter(lookups).distinct()
+
+            return render(request,'services/search_result.html', {
+                'results': results
+            })
+
+        else:
+            return render(request,'services/search_result.html')
+
+    else:
+        return render(request,'services/search_result.html')
+
+
+def searchResultView(request):
+    return render(request,'search_result.html')

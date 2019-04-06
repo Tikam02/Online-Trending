@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if results %}
+   {% for story in results %}
+      {% include story.service.get_story_template %}
+    {% endfor %}
+{% else %}
+    No search results for this query
+{% endif %}
+
+
+{% endblock %}
