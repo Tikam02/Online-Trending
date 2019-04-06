@@ -18,7 +18,7 @@
 {% block menu %}{% endblock %}
 
 {% block content %}
-<div id="container-signup" >
+<div id="container" >
   <h2 id="title">
    <img src="{% static 'img/lock.png' %}" id="invert_s">
     Sign Up
@@ -29,7 +29,7 @@
       {% include 'includes/form.html' %}
       <div>
         <button type="submit" id="submit" >Create an account</button>
-        <span id="having_account">Already have an account? <a href="{% url 'login' %}">Login</a></span>
+        <div id="having_account">Already have an account? <a href="{% url 'login' %}">Login</a></div>
       </div>
     </form>
   </div>
