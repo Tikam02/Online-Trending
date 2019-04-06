@@ -217,23 +217,20 @@ def searchView(request):
     if request.method == 'GET':
         query= request.GET.get('q')
 
-        submitbutton= request.GET.get('submit')
-
-        if query is not None:
+        if query:
             lookups= Q(title__icontains=query) | Q(content__icontains=query)
 
             results= Story.objects.filter(lookups).distinct()
 
-            context={'results': results,
-                     'submitbutton': submitbutton}
-
-            return HttpResponseRedirect(request,'search_result')
+            return render(request,'services/search_result.html', {
+                'results': results
+            })
 
         else:
-            return render(request, 'search_posts.html')
+            return render(request,'services/search_result.html')
 
     else:
-        return render(request, 'search_posts.html')
+        return render(request,'services/search_result.html')
 
 
 def searchResultView(request):

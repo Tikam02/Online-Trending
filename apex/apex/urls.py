@@ -34,7 +34,6 @@ urlpatterns = [
     path('signup/', services_views.register_user, name='signup'),
     path('feedback/', services_views.feedbackView, name='feedback'),
     path('success/', successView, name='success'),
-    path('search_result/',searchResultView,name='search_result'),
     path('about/', aboutView, name='about'),
     path('search/',searchView,name='search'),
     path('about/', TemplateView.as_view(template_name='core/about.html'), name='about'),
