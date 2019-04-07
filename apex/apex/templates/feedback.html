@@ -1,4 +1,3 @@
-
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
@@ -27,10 +26,16 @@
 
   <div class="wrapper">
     <header>
-      <a href="{% url 'front_page' %}">apex</a>
+      <a href="{% url 'front_page' %}">Home</a>
+      {% block search %}
+
+        {% include 'search_posts.html' %}
+        {% endblock %}
       {% if user.is_authenticated %}
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
+          <a href="{% url 'password_change' %}">Change Password</a></nav>
           <a href="{% url 'logout' %}">logout</a></nav>
+          <a href="{% url 'bookmarks' %}">See Bookmarks</a>
       {% else %}
         <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
       {% endif %}
@@ -107,8 +112,5 @@
   <script src="{% static 'js/vendor/moment-timezone-with-data-2010-2020.min.js' %}"></script>
   <script src="{% static 'js/woid.js' %}"></script>
   {% block javascript %}{% endblock %}
-  { % comment %}
-Jdbdid63
-  { % endcomment %}
 </body>
 </html>
