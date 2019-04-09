@@ -1,14 +1,18 @@
 
-#container-login {
+#container {
     background-color: #1D1F20;
     position: relative;
     top: 20%;
     margin: auto;
-    width: 340px;
-    height: 445px;
+    /*width: 340px;
+    height: 445px;*/
     border-radius: 0.35em;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
+    padding-bottom: 0.5%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    margin: 3% 30%;
 }
 #title {
 	color: #D0D0D0;
@@ -33,14 +37,6 @@
 	color: #D0D0D0;
 	font-size: 15px;
 	font-weight:bold;
-}
-#container-signup {
-    background-color: #1D1F20;
-    position: relative;
-    top: 20%;
-    margin: auto 10%;
-    border-radius: 0.35em;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
 }
 #invert_s{
     filter: invert(89%);

@@ -1,16 +1,27 @@
 <li>
-  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener">{{ story.title }}</a>
+  <div id="posttitle">
+  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" id="ptitle">{{ story.title }}</a>
   {% if append_service %}
     <small><strong>{{ story.service.name }}</strong></small>
   {% endif %}
+</div>
+<div id="postcontent">
   <p>
     {{ story.score }} point{{ story.score|pluralize }}
     &bullet;
     {{ story.date|date:'M d, Y'|lower }}
+    <div id="bookmark_post">
+  {% include 'services/includes/bookmark_sec.html' %}
+</div>
   </p>
+  <table>
+    <th>
+  <img src= {{ story.image_url }} alt="We could not display the image" height=150></th>
+    <th>
   <p style="font-size:17px">
     {{ story.description }}
   </p>
-  <img src= {{ story.image_url }} alt="We could not display the image" height=150>
-  {% include 'services/includes/bookmark_sec.html' %}
+</th>
+</table>
+</div>
 </li>
