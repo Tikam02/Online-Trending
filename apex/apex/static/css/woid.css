@@ -648,6 +648,7 @@ h3 {
   font-size: 18px;
 }
 
+
 #ptitle{
   color: #ebebe0;
 }
@@ -669,6 +670,7 @@ h3 {
   box-sizing: border-box;
   overflow: auto;
 }
+
 
 #bookmark_post{
   float: right;
@@ -697,6 +699,17 @@ table th{
   padding: 10px;
 }
 
+
+
+#left{
+  padding: 10px 10px 10px 40px;
+  float: left;
+}
+
+#right{
+  padding: 10px 10px 10px 850px;
+  float: right;
+}
 
 button {
   display: inline-block;
