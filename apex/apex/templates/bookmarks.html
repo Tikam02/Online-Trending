@@ -6,20 +6,25 @@
 
 {% block content %}
 
-<h1>Bookmarks </h1>
+<h1 style="font-weight: bolder; font-color: #2e2e1f; text-shadow: 1.5px 1.5px #a3a375">Bookmarks </h1>
 
 {% if user.is_authenticated %}
   {% for service in services %}
-   <b><p style="font-size:17px"> {{ service }} </p></b>
+  <div id="bookmark_flex">
+   <b><p id="bookmark_title"> {{ service }} </p></b>
   {% for story in bookmarks %}
     {% if story.user.id == user.id %}
     {% if story.obj.service.slug == service.slug %}
+    <div style="padding-top: 10px"></div>
        {% with story.obj as story %}
        {% include service.get_story_template %}
        {% endwith %}
+
+    <div style="border-bottom:   #c2c2a3 solid 1px"></div>
     {% endif %}
     {% endif %}
   {% endfor %}
+  </div>
   <br>
   {% endfor %}
 

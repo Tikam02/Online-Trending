@@ -18,7 +18,7 @@
   </ol>
 
   {% if stories.paginator.num_pages > 1 %}
-    <ul class="paginator">
+    <ul class="paginator" >
       {% if stories.has_previous %}
         <li><a href="?page={{ stories.previous_page_number }}">&laquo; previous</a></li>
       {% else %}
