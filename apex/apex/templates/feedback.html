@@ -1,7 +1,7 @@
 {% extends 'base_nomenu.html' %}
 {% load static %}
 {% block content %}
-<h1 style="font-weight: bolder; font-color: #2e2e1f; text-shadow: 1.5px 1.5px #a3a375">Feedback </h1>
+<h1 id="heading">Feedback </h1>
 {% load widget_tweaks %}
 {% load staticfiles %}
 
@@ -45,7 +45,7 @@
     </div>
   {% endfor %}
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="button">Submit</button>
 </form>
 
 {% endblock %}

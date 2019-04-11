@@ -42,15 +42,16 @@
         {% endblock %}
 
       {% if user.is_authenticated %}
+      
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
-          <a href="{% url 'password_change' %}" class="button"><span>Change Password</span></a></nav>
-          <div id="profile">
-          <a href="{% url 'logout' %}" class="button"><span>logout</span></a>
-          <a href="{% url 'bookmarks' %}" class="button"><span>See Bookmarks</span></a>
-        </div>
-
+          <a href="{% url 'password_change' %}" class="button" id="login"><span>Change Password</span></a>
+          
+          <a href="{% url 'logout' %}" class="button" id="login"><span>Logout</span></a>
+          <a href="{% url 'bookmarks' %}" class="button" id="login"><span>See Bookmarks</span></a>
+        
+          </nav>
       {% else %}
-        <nav><a href="{% url 'signup' %}" class="button"><span>Sign Up</span></a> / <a href="{% url 'login' %}"class="button"><span>Login</span></a></nav>
+        <nav><a href="{% url 'signup' %}" class="button" id="login"><span>Sign Up</span></a> / <a href="{% url 'login' %}"class="button" id="login"><span>Login</span></a></nav>
       {% endif %}
     </header>
     <main>

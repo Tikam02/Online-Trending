@@ -514,6 +514,12 @@ header {
   margin-left: 20%;
 }
 
+#heading{
+  font-weight: bolder; 
+  font-color: #2e2e1f; 
+  text-shadow: 1.5px 1.5px #a3a375;
+}
+
 header > a {
   float: left;
   color: #333;
@@ -586,8 +592,6 @@ main > ol {
 
 ul[class^='menu-'] {
   margin: 0 0 20px 0;
-  border-color: #a2a276;
-  border-style: solid;
   padding: 10px;
 }
 
@@ -671,6 +675,11 @@ h3 {
   overflow: auto;
 }
 
+#bookmark_hn{
+  float: right;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
 
 #bookmark_post{
   float: right;
@@ -711,9 +720,23 @@ table th{
   float: right;
 }
 
+#login{
+margin-left: 2px;
+}
+
+#change_password{
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  color: #333;
+  float:center;
+  margin: 0% 30% 2% 30%;
+}
+
+
 button {
   display: inline-block;
-  zoom: 1;
+  zoom 1;
   line-height: normal;
   white-space: nowrap;
   vertical-align: middle;

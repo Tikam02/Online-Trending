@@ -8,8 +8,8 @@
 {% block stylesheet %}{% endblock %}
 </head>
 <ul class="menu-services">
-  <li><a href="{% url 'front_page' %}"{% if request.path == '/' %} class="active"{% endif %}  class="button"><span>front page</span></a></li>
+  <li><a href="{% url 'front_page' %}"{% if request.path == '/' %} class="active"{% endif %}  class="button" style=" text-transform: capitalize;"><span>home page</span></a></li>
   {% for slug in services_slugs %}
-    <li><a href="{% url 'services:index' slug %}"{% if request.path|startswith:slug %}  class="active"{% endif %} class="button"><span>{{ slug }}</span></a></li>
+    <li><a href="{% url 'services:index' slug %}"{% if request.path|startswith:slug %}  class="active"{% endif %} class="button" style=" text-transform: capitalize;"><span>{{ slug }}</span></a></li>
   {% endfor %}
 </ul>
