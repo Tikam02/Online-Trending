@@ -1,22 +1,30 @@
 <br></br>
 <li>
-  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" style="font-size:25px">{{ story.title }}</a>
+  <div id="posttitle">
+  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" id="ptitle">{{ story.title }}</a>
   {% if story.nsfw %}
     <small class="nsfw">[nsfw]</small>
   {% endif %}
+
   {% if append_service %}
     <small><strong>{{ story.service.name }}</strong></small>
   {% endif %}
-  <!--  <button type="bullet" value="reset">Bookmark this</button> -->
+</div>
+<div id="postcontent">
+  <p style=" text-transform: capitalize;">
+    {{ story.date|date:'M d, Y'|lower }}
+    <div id="bookmark_post">
+  {% include 'services/includes/bookmark_sec.html' %}
+</div>
+</p>
+<table>
+    <th>
+  <img src= {{ story.image_url }} alt="We could not display the image" height=150></th>
+    <th>
   <p style="font-size:17px">
     {{ story.description }}
   </p>
-
-  <img src= {{ story.image_url }} alt="Image Displayed here" height=150>
-
-  <p style="font-size:20px">
-    &bullet;
-    {{ story.date|date:'M d, Y'|lower }}
-  </p>
-  {% include 'services/includes/bookmark_sec.html' %}
+</th>
+</table>
+  </div> 
 </li>
