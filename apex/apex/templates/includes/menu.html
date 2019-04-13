@@ -1,7 +1,7 @@
 {% load startswith %}
 
 <ul class="menu-services">
-  <li><a href="{% url 'front_page' %}"{% if request.path == '/' %} class="active"{% endif %}>front page</a></li>
+  <li><a href="{% url 'front_page' %}"{% if request.path == '/' %} class="active"{% endif %}>Everything</a></li>
   {% for slug in services_slugs %}
     <li><a href="{% url 'services:index' slug.slug %}"{% if request.path|startswith:slug.slug %} class="active"{% endif %}>{{ slug.name }}</a></li>
   {% endfor %}

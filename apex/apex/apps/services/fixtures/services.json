@@ -56,7 +56,7 @@
   {
       "model": "services.Service",
       "fields": {
-        "name": "RSS feed",
+        "name": "Health",
         "slug": "rss-feed",
         "url": "https://ew.com/",
         "story_url": "https://ew.com/"
