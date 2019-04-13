@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load feeder %}
 
 {% block title %}Cookies {% endblock %}
 
 {% block content %}
-  <h2>cookies</h2>
+  <h2 style="text-transform: capitalize;" id="heading">cookies</h2>
+    {% feeds "" 10 %}
 {% endblock %}

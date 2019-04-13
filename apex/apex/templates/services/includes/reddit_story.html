@@ -10,14 +10,14 @@
 </div>
 <div id="reddit_post"> 
   <p >
-    <div id="left">
+    <div id="left" style=" text-transform: capitalize;">
     {{ story.score }} upvote{{ story.score|pluralize }}
     &bullet;
     {{ story.comments }} comment{{ story.comments|pluralize }}
     &bullet;
     {{ story.date|date:'M d, Y'|lower }}
   </div>
-    <div id="right">
+    <div id="bookmark_hn">
       {% include 'services/includes/bookmark_sec.html' %}
     </div>
   </p>

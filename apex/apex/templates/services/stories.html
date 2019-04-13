@@ -2,14 +2,14 @@
 
 {% load static %}
 
-{% block title %}{{ service.name }} · Woid{% endblock %}
+{% block title %}{{ service.name }} {% endblock %}
 
 {% block javascript %}
   <script src="{% static 'js/services/stories.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-  <h2>{{ service.name }} <small>({{ subtitle }})</small></h2>
+  <h2 ><span id="heading">{{ service.name }}</span> <small >({{ subtitle }})</small></h2>
   {% include 'services/includes/menu.html' %}
   <ol class="stories" start="{{ start }}">
     {% for story in stories %}

@@ -11,11 +11,6 @@ logger = logging.getLogger(__name__)
 
 class AbstractBaseCrawler:
     def __init__(self, slug, client):
-        #Service.objects.all().delete()
-
-        # for i in Service.objects.all():
-        #     print(i)
-
         self.service=Service.objects.get(slug=slug)
         self.slug = slug
         self.client = client
@@ -28,11 +23,9 @@ class AbstractBaseCrawler:
             self.update_top_stories()
             self.service.status = Service.GOOD
             self.service.save()
-            i=5
         except Exception:
             self.service.status = Service.ERROR
             self.service.save()
-            j=5
             
 class HackerNewsCrawler(AbstractBaseCrawler):
     def __init__(self):
@@ -45,7 +38,7 @@ class HackerNewsCrawler(AbstractBaseCrawler):
             for code in stories:
                 self.update_story(code)
                 i += 1
-                if i > 100:
+                if i > 12:
                     break
         except Exception:
             logger.exception('An error occurred while executing `update_top_stores` for Hacker News.')

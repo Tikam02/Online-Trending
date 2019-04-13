@@ -34,13 +34,13 @@
     <header>
 
       <a href="{% url 'front_page' %}" class="button"><span>Home </span></a>
-      
+
       {% block search %}
-        
+
         {% include 'search_posts.html' %}
 
         {% endblock %}
-      
+
       {% if user.is_authenticated %}
       
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
@@ -62,10 +62,6 @@
         {{ message }}
       </div>
     {% endfor %}
-    {% block menu %}
-      <h1><span id="heading">Top Stories </span><span class="utc"></span></h1>
-      {% include 'includes/menu.html' %}
-    {% endblock %}
     {% block content %}{% endblock %}
     </main>
     <div class="push" id="stories"></div>
