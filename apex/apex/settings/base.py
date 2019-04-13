@@ -30,8 +30,10 @@ INSTALLED_APPS = [
 
     'apex.apps.accounts',
     'apex.apps.core',
+    'apex.apps.externalfeed',
     'apex.apps.services',
-     'widget_tweaks',
+    'widget_tweaks',
+
 ]
 
 ROOT_URLCONF = 'apex.urls'
@@ -185,6 +187,21 @@ ENTERTAINMENT_KEY=config('ENTERTAINMENT_KEY',default='ffb8a867858a410cb805e3cd7e
 BUSINESS_KEY=config('BUSINESS_KEY',default='ffb8a867858a410cb805e3cd7e6134fd')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+FEED_SOURCES = (
+    # (key, source, prefix to strip from the url)
+    # ('bbchealth',
+    #  'http://feeds.bbci.co.uk/news/health/rss.xml',
+    #  'http://www.bbc.co.uk/news'),
+    # (
+    # 'bbcscience',
+    #  'http://feeds.bbci.co.uk/news/science_and_environment/rss.xml',
+    #  'http://www.bbc.co.uk/news'),
+    (
+    'sciencedaily',
+     'https://www.sciencedaily.com/rss/top/health.xml',
+     'http://www.bbc.co.uk/news'),
+)
 
 # EMAIL_HOST = 'smtp.sendgrid.net'
 # EMAIL_PORT = 587

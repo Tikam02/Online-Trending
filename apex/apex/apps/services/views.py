@@ -32,7 +32,7 @@ from .models import PostModel
 
 
 def stories(request, service, queryset, subtitle):
-    paginator = Paginator(queryset, 100)
+    paginator = Paginator(queryset, 20)
     page = request.GET.get('page')
     try:
         stories = paginator.page(page)
@@ -42,7 +42,7 @@ def stories(request, service, queryset, subtitle):
         stories = paginator.page(paginator.num_pages)
 
     if stories.number > 1:
-        start = (stories.number - 1) * 100 + 1
+        start = (stories.number - 1) * 20 + 1
     else:
         start = 1
 
@@ -118,7 +118,7 @@ def month(request, slug, year, month):
 def day(request, slug, year, month, day):
     date = datetime.datetime(int(year), int(month), int(day))
     service = get_object_or_404(Service, slug=slug)
-    queryset = service.stories.filter(status=Story.OK, date=date)[:10]
+    queryset = service.stories.filter(status=Story.OK, date=date)[:100]
     subtitle = timezone.datetime(int(year), int(month), int(day)).strftime('%d %b %Y')
     return stories(request, service, queryset, subtitle)
 

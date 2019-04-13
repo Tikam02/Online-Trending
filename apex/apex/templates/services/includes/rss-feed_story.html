@@ -1,0 +1,13 @@
+<li>
+  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" style="font-size:25px">{{ story.title }}</a>
+  <!--  <button type="bullet" value="reset">Bookmark this</button> -->
+  <p style="font-size:17px">
+    {{ story.description }}
+  </p>
+  <p style="font-size:20px">
+    &bullet;
+    {{ story.date|date:'M d, Y'|lower }}
+  </p>
+  {% include 'services/includes/bookmark_sec.html' %}
+</li>
+

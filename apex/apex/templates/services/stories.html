@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block content %}
+
   <h2>{{ service.name }} <small>({{ subtitle }})</small></h2>
   {% include 'services/includes/menu.html' %}
   <ol class="stories" start="{{ start }}">
@@ -16,7 +17,6 @@
       {% include service.get_story_template %}
     {% endfor %}
   </ol>
-
   {% if stories.paginator.num_pages > 1 %}
     <ul class="paginator" >
       {% if stories.has_previous %}
