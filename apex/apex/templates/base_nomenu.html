@@ -1,11 +1,19 @@
-{% load staticfiles %}
-<!DOCTYPE html>
+{% load staticfiles %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Apex{% endblock %}</title>
+  <title>{% block title %}Online Trending{% endblock %}</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/apple-touch-icon-57x57.png' %}">
+  <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/apple-touch-icon-60x60.png' %}">
+  <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-touch-icon-76x76.png' %}">
+  <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+  <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/apple-touch-icon-120x120.png' %}">
+  <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/apple-touch-icon-144x144.png' %}">
+  <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/apple-touch-icon-152x152.png' %}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon-180x180.png' %}">
   <link rel="icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" sizes="32x32">
   <link rel="icon" type="image/png" href="{% static 'img/favicon-194x194.png' %}" sizes="194x194">
   <link rel="icon" type="image/png" href="{% static 'img/favicon-96x96.png' %}" sizes="96x96">
@@ -19,90 +27,54 @@
   <link href="{% static 'css/vendor/normalize.css' %}" rel="stylesheet">
   <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
   <link href="{% static 'css/woid.css' %}" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% block stylesheet %}{% endblock %}
 </head>
 <body>
-
   <div class="wrapper">
     <header>
-      <a href="{% url 'front_page' %}">Home</a>
+
+      <a href="{% url 'front_page' %}" class="button"><span>Home </span></a>
+
       {% block search %}
 
         {% include 'search_posts.html' %}
+
         {% endblock %}
+
       {% if user.is_authenticated %}
+      
         <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
-          <a href="{% url 'password_change' %}">Change Password</a></nav>
-          <a href="{% url 'logout' %}">logout</a></nav>
-          <a href="{% url 'bookmarks' %}">See Bookmarks</a>
+          <a href="{% url 'password_change' %}" class="button" id="login"><span>Change Password</span></a>
+          
+          <a href="{% url 'logout' %}" class="button" id="login"><span>Logout</span></a>
+          <a href="{% url 'bookmarks' %}" class="button" id="login"><span>See Bookmarks</span></a>
+        
+          </nav>
       {% else %}
-        <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
+        <nav><a href="{% url 'signup' %}" class="button" id="login"><span>Sign Up</span></a> / <a href="{% url 'login' %}"class="button" id="login"><span>Login</span></a></nav>
       {% endif %}
-      <nav>&nbsp;</nav>
     </header>
     <main>
 
-{% block content %}
-{% load widget_tweaks %}
-{% load staticfiles %}
-
-<form method="post" novalidate>
-  {% csrf_token %}
-
-  {% for hidden_field in form.hidden_fields %}
-    {{ hidden_field }}
-  {% endfor %}
-
-  {% if form.non_field_errors %}
-    <div class="alert alert-danger" role="alert">
-      {% for error in form.non_field_errors %}
-        {{ error }}
-      {% endfor %}
-    </div>
-  {% endif %}
-
-  {% for field in form.visible_fields %}
-    <div class="form-group">
-      {{ field.label_tag }}
-
-      {% if form.is_bound %}
-        {% if field.errors %}
-          {% render_field field class="form-control is-invalid" %}
-          {% for error in field.errors %}
-            <div class="invalid-feedback">
-              {{ error }}
-            </div>
-          {% endfor %}
-        {% else %}
-          {% render_field field class="form-control is-valid" %}
-        {% endif %}
-      {% else %}
-        {% render_field field class="form-control" %}
-      {% endif %}
-
-      {% if field.help_text %}
-        <small class="form-text text-muted">{{ field.help_text }}</small>
-      {% endif %}
-    </div>
-  {% endfor %}
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-{% endblock %}
-
-
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        <a href="javascript:void(0);" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+        {{ message }}
+      </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
     </main>
-    <div class="push"></div>
+    <div class="push" id="stories"></div>
   </div>
   <footer>
-    <a href="{% url 'about' %}">about</a>
-    <a href="{% url 'status' %}">status</a>
+    <a href="{% url 'status' %}">Status</a>
     <a href="https://github.com/Tikam02/Online-Trending" target="_blank">Github</a>
-    <a href="{% url 'cookies' %}">cookies</a>
-    <a href="{% url 'privacy' %}">privacy</a>
-    <a href="{% url 'terms' %}">terms</a>
+    <a href="{% url 'cookies' %}">Cookies</a>
+    <a href="{% url 'privacy' %}">Privacy</a>
+    <a href="{% url 'terms' %}">Terms</a>
+    <a href="{% url 'FAQ' %}">FAQ</a>
+    <a href="{%url 'feedback' %}">Feedback</a>
+    <a href="{% url 'about' %}">About</a>
   </footer>
   <script src="{% static 'js/ga.js' %}"></script>
   <script src="{% static 'js/vendor/jquery-1.11.3.min.js' %}"></script>

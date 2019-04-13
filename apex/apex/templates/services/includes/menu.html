@@ -1,14 +1,32 @@
 {% load services_url %}
-
-<ul class="menu-stories">
-  <li><a href="{% url 'services:index' service.slug %}">today</a></li>
-  <li><a href="{% services_url slug=service.slug delta=1 %}">yesterday</a></li>
-  <li><a href="{% services_url slug=service.slug delta=2 %}">{% services_url_name slug=service.slug delta=2 %}</a></li>
-  <li><a href="{% services_url slug=service.slug delta=3 %}">{% services_url_name slug=service.slug delta=3 %}</a></li>
-  <li><a href="{% services_url slug=service.slug delta=4 %}">{% services_url_name slug=service.slug delta=4 %}</a></li>
-  <li><a href="{% services_url slug=service.slug delta=5 %}">{% services_url_name slug=service.slug delta=5 %}</a></li>
-  <li><a href="{% services_url slug=service.slug delta=6 %}">{% services_url_name slug=service.slug delta=6 %}</a></li>
-  <li><a href="{% services_url_month slug=service.slug %}">{% services_url_month_name %}</a></li>
-  <li><a href="{% services_url_year slug=service.slug %}">{% now 'Y' %}</a></li>
-  <li><a href="{% url 'services:archive' service.slug %}">archive</a></li>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Online Trending{% endblock %}</title>
+<link href="{% static 'css/woid.css' %}" rel="stylesheet" >
+{% block stylesheet %}{% endblock %}
+</head>
+<ul class="menu-stories" >
+  <li><a href="{% url 'services:index' service.slug %}" class="button" style="
+  text-transform: capitalize;"><span>today</span></a></li>
+  <li><a href="{% services_url slug=service.slug delta=1 %}" class="button" style="
+  text-transform: capitalize;"><span>yesterday</span></a></li>
+  <li><a href="{% services_url slug=service.slug delta=2 %}" class="button" style="
+  text-transform: capitalize;"><span>{% services_url_name slug=service.slug delta=2 %}</span></a></li>
+  <li><a href="{% services_url slug=service.slug delta=3 %}" class="button" style="
+  text-transform: capitalize;"><span>{% services_url_name slug=service.slug delta=3 %}</span></a></li>
+  <li><a href="{% services_url slug=service.slug delta=4 %}" class="button" style="
+  text-transform: capitalize;"><span>{% services_url_name slug=service.slug delta=4 %}</span></a></li>
+  <li><a href="{% services_url slug=service.slug delta=5 %}" class="button" style="
+  text-transform: capitalize;"><span>{% services_url_name slug=service.slug delta=5 %}</span></a></li>
+  <li><a href="{% services_url slug=service.slug delta=6 %}" class="button" style="
+  text-transform: capitalize;"><span>{% services_url_name slug=service.slug delta=6 %}</span></a></li>
+  <li><a href="{% services_url_month slug=service.slug %}" class="button" style="
+  text-transform: capitalize;"><span>{% services_url_month_name %}</span></a></li>
+  <li><a href="{% services_url_year slug=service.slug %}" class="button" style="
+  text-transform: capitalize;"><span>{% now 'Y' %}</span></a></li>
+  <li><a href="{% url 'services:archive' service.slug %}" class="button" style="
+  text-transform: capitalize;"><span>archive</span></a></li>
 </ul>
+</html>

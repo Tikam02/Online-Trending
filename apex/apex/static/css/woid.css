@@ -18,6 +18,7 @@ html {
 
 body {
   margin: 0;
+  background-color: #f5f5f0 ;
 }
 
 /* HTML5 display definitions
@@ -447,9 +448,9 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  width: 960px;
+  /*width: 960px;*/
   margin: 0 auto;
-  padding: 0 30px;
+  /*padding: 0 30px;*/
   color: #333;
 }
 
@@ -463,10 +464,60 @@ a {
   color: #378fd2;
 }
 
+
+
+
+.button {
+  border-radius: 3px;
+  background-color: #cbcbb3;
+  color: #2e2e1f;
+  text-align: center;
+  padding: 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 header {
-  border-bottom: 1px solid #eee;
-  padding: 10px 0;
+  border-bottom: 1px solid #89895d;
+  padding: 20px 20px 10px 50px;
   margin-bottom: 20px;
+  background-color:  #a2a276;
+  box-shadow: 0px 2px 5px #89895d;
+}
+#search{
+  margin-left: 20%;
+}
+
+#heading{
+  font-weight: bolder; 
+  font-color: #2e2e1f; 
+  text-shadow: 1.5px 1.5px #a3a375;
 }
 
 header > a {
@@ -496,6 +547,13 @@ header nav a {
   margin: 0 auto -40px;
 }
 
+main{
+  width: 960px;
+  margin-left: 17%;
+  margin-right: 20%;
+ /* background-color: black;*/
+}
+
 .push {
   height: 40px;
 }
@@ -505,6 +563,21 @@ footer {
   height: 40px;
   position: relative;
   padding-top: 7px;
+  text-align: center;
+}
+
+
+#left{
+  float: left;
+  width: 50%;
+  padding: 0.5% 0% 0.5% 5%;
+}
+
+#right{
+  text-align: right;
+   float: right;
+  width: 50%;
+  padding: 0.5% 5% 0.5% 0%;
 }
 
 footer a {
@@ -519,7 +592,7 @@ main > ol {
 
 ul[class^='menu-'] {
   margin: 0 0 20px 0;
-  padding: 0;
+  padding: 10px;
 }
 
 ul[class^='menu-'] li {
@@ -528,10 +601,11 @@ ul[class^='menu-'] li {
 }
 
 ul[class^='menu-'] li + li:before {
-  padding: 0 5px;
+  /*padding: 0 5px;*/
   color: #ccc;
-  content: "/\00a0";
+  content: "\00a0";
 }
+
 
 ul.paginator li {
   list-style: none;
@@ -547,11 +621,20 @@ h3 {
 .stories {
   padding-left: 0;
   margin-bottom: 20px;
+  margin-right: 15%;
+  list-style-type: none;
 }
 
 .stories li {
-  padding-left: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  background-color: white;
+  border-radius: 10px;
+  border: #a2a276 ;
+  box-shadow: 2px 2px 5px #89895d;
+}
+
+.stories li:hover{
+  box-shadow: 3px 3px 3px 3px #89895d;
 }
 
 .stories li p {
@@ -560,9 +643,100 @@ h3 {
   color: #666;
 }
 
+#posttitle{
+  background-color: #5c5c3d;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ebebe0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+#ptitle{
+  color: #ebebe0;
+}
+
+#ptitle:hover{
+  color:  #2e2e1f;
+}
+
+#reddit_post{
+  width: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+#postcontent{
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+#bookmark_hn{
+  float: right;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+#bookmark_post{
+  float: right;
+}
+
+#bookmark_title{
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: #3d3d29 solid 1px
+}
+
+#bookmark_flex{
+  background-color: #e0e0d1;
+  border-radius: 10px;
+  padding:10px 20px;
+}
+
+
+#profile{
+  float: right;
+  padding: 25px 0px;
+  margin-left: 20px;
+}
+
+table th{
+  padding: 10px;
+}
+
+
+
+#left{
+  padding: 10px 10px 10px 40px;
+  float: left;
+}
+
+#right{
+  padding: 10px 10px 10px 850px;
+  float: right;
+}
+
+#login{
+margin-left: 2px;
+}
+
+#change_password{
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  color: #333;
+  float:center;
+  margin: 0% 30% 2% 30%;
+}
+
+
 button {
   display: inline-block;
-  zoom: 1;
+  zoom 1;
   line-height: normal;
   white-space: nowrap;
   vertical-align: middle;
@@ -713,6 +887,14 @@ ul li a.active {
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  background-color: #a2a276;
+  border-radius: 3px;
+  color: #2e2e1f;
+  text-align: center;
+  padding: 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 main h2 small {

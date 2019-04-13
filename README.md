@@ -197,7 +197,7 @@ py -m pip install --user virtualenv
 ### Creating Virtual Environment
 * On Mac and Linux:
 ```
-python3 -m virtualenv env
+python3 -m venv env
 ```
 * On windows:
 ```
