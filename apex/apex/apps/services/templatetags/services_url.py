@@ -40,6 +40,6 @@ def services_url_month_name():
 
 @ register.filter('user_in')
 def user_in (objects, user):
-     if user.is_authenticated:
+     if user.is_authenticated and (objects is not None):
          return objects.filter (user = user) .exists ()
      return False
