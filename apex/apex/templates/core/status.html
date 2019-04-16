@@ -18,7 +18,7 @@
     <tbody>
       {% for service in services %}
       <tr>
-        <td>{{ service.slug }}</td>
+        <td>{{ service.name }}</td>
         <td>{{ service.get_status_display }}</td>
         <td>
           {% if service.status == 'C' %}

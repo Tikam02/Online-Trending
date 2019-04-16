@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.urls import reverse
 from apex.apps.services.models import *
+from django.utils import timezone
 import datetime
 import feedparser
 
@@ -45,6 +46,9 @@ def load_feeds():
         date = datetime.datetime.now()
         queryset = Service.objects.get(slug='rss-feed').stories.filter(status=Story.OK, date=date)[:10]
         results[key] = queryset
+    service = Service.objects.get(slug='rss-feed')
+    service.last_run = timezone.now()
+    service.save()
     return results
 
 
