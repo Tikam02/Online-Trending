@@ -212,16 +212,18 @@ def successView(request):
 def aboutView(request):
     return render(request,'about_us.html')
 
+def queryLookup(query):
+    lookups= Q(title__icontains=query) | Q(content__icontains=query)
+    return Story.objects.filter(lookups).distinct()
+
+
 def searchView(request):
    # return render(request,'search_posts.html')
     if request.method == 'GET':
         query= request.GET.get('q')
 
         if query:
-            lookups= Q(title__icontains=query) | Q(content__icontains=query)
-
-            results= Story.objects.filter(lookups).distinct()
-
+            results = queryLookup(query)
             return render(request,'services/search_result.html', {
                 'results': results
             })

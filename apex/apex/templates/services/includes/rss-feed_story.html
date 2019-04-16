@@ -1,13 +1,19 @@
 <li>
-  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" style="font-size:25px">{{ story.title }}</a>
+  <div id="posttitle">
+  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" id="ptitle">{{ story.title }}</a>
   <!--  <button type="bullet" value="reset">Bookmark this</button> -->
-  <p style="font-size:17px">
+  </div>
+<div id="postcontent">
+  <p style=" text-transform: capitalize;">
+    {{ story.score }} point{{ story.score|pluralize }}
+    {{ story.date|date:'M d, Y'|lower }}
+    <div id="bookmark_post">
+  {% include 'services/includes/bookmark_sec.html' %}
+</div>
+  </p>
+  <p style="font-size:17px; font-weight: bold;">
     {{ story.description }}
   </p>
-  <p style="font-size:20px">
-    &bullet;
-    {{ story.date|date:'M d, Y'|lower }}
-  </p>
-  {% include 'services/includes/bookmark_sec.html' %}
+</div>
 </li>
 

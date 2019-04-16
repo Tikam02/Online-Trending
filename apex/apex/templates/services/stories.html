@@ -9,6 +9,8 @@
 {% endblock %}
 
 {% block content %}
+
+<button id="myBtn"><a href="#top" style="color: white" id="button"><span class="glyphicon glyphicon-arrow-up"></span></a></button>
   <h2 ><span id="heading">{{ service.name }}</span> <small >({{ subtitle }})</small></h2>
   {% include 'services/includes/menu.html' %}
   <ol class="stories" start="{{ start }}">
@@ -20,9 +22,9 @@
   {% if stories.paginator.num_pages > 1 %}
     <ul class="paginator" >
       {% if stories.has_previous %}
-        <li><a href="?page={{ stories.previous_page_number }}">&laquo; previous</a></li>
+        <li><a href="?page={{ stories.previous_page_number }}">&laquo; </a></li>
       {% else %}
-        <li>&laquo; previous</li>
+        <li>&laquo; </li>
       {% endif %}
 
       {% for i in stories.paginator.page_range %}
@@ -34,9 +36,9 @@
       {% endfor %}
 
       {% if stories.has_next %}
-        <li><a href="?page={{ stories.next_page_number }}">next &raquo;</a></li>
+        <li><a href="?page={{ stories.next_page_number }}"> &raquo;</a></li>
       {% else %}
-        <li>next &raquo;</li>
+        <li> &raquo;</li>
       {% endif %}
     </ul>
   {% endif %}
