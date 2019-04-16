@@ -1,23 +1,21 @@
 
 #container {
-    background-color: #1D1F20;
     position: relative;
     top: 20%;
     margin: auto;
     /*width: 340px;
     height: 445px;*/
+    color: #808080;
     border-radius: 0.35em;
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     padding-bottom: 0.5%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
     margin: 3% 30%;
 }
 #title {
-	color: #D0D0D0;
+    color: white;
     position: relative;
-    background-color: #1A1C1D;
+    background-color: #34495e;
     width: 100%;
     padding: 20px 0px;
     border-radius: 0.35em;
@@ -26,27 +24,22 @@
     text-align : center;
 }
 #invert{
-	filter: invert(89%);
-	height: 20px;
-  	width: 5%;
-  	background-color: #1A1C1D;
+    
+    background-color:#808080; 
+	height: 40px;
+  	width: 40px;
 }
 #submit{
+    color: white;
 	text-align: center;
-	background-color: #373b3d;
-	color: #D0D0D0;
+    background-color: #34495e;
 	font-size: 15px;
 	font-weight:bold;
-}
-#invert_s{
-    filter: invert(89%);
-    height: 22px;
-    width: 20px;
-    background-color: #1A1C1D;
 }
 #form{
     padding: 0% 0% 2% 4.5% ;
 }
 #having_account{
-    color: #D0D0D0;
+    padding-top: 10px;
+    color: #808080;
 }

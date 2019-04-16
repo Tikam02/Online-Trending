@@ -3,6 +3,7 @@
 {% load staticfiles %}
 
 {% block stylesheet %}
+  <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
   <link href="{% static 'css/registration.css' %}" rel="stylesheet">
   <link rel="stylesheet"  href=" {% static 'css/register.css' %}" >
 {% endblock %}
@@ -24,7 +25,7 @@
 	Login
   </h2>
   <form method="post">
-  	<div style="color: #D0D0D0; font-size:  20px; ">
+  	<div style="font-size:  20px; ">
     {% csrf_token %}
     {% include 'includes/form.html' %}
     </div>

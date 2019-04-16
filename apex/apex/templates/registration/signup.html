@@ -3,6 +3,7 @@
 {% load staticfiles %}
 
 {% block stylesheet %}
+  <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
   <link href="{% static 'css/registration.css' %}" rel="stylesheet">
   <link rel="stylesheet"  href=" {% static 'css/register.css' %}" >
 {% endblock %}
@@ -20,14 +21,14 @@
 {% block content %}
 <div id="container" >
   <h2 id="title">
-   <img src="{% static 'img/lock.png' %}" id="invert_s">
     Sign Up
   </h2>
-  <div id="form" style="color: #D0D0D0; font-size:  17px; ">
+  <div id="form" style= "font-size:  17px; ">
     <form method="post">
       {% csrf_token %}
       {% include 'includes/form.html' %}
       <div>
+        <div style="font-size: 10px">[Password must contain 8 characters with atleast 1 numeric, 1 special character, 1 alphabet ]</div>
         <button type="submit" id="submit" >Create an account</button>
         <div id="having_account">Already have an account? <a href="{% url 'login' %}">Login</a></div>
       </div>

@@ -1,7 +1,7 @@
 <div id="search">
 <form action="{% url 'search' %}" method="GET" value="{{ request.GET.q }}">
   <div class="row">
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-6 col-md-4" style="margin-top: 0px">
       <div class="input-group">
         <input
                 type="text"
@@ -17,6 +17,24 @@
         </div>
       </div>
     </div>
+    {% if user.is_authenticated %}
+      
+        <span style="margin-bottom: -2px; color: white; padding-left: 50px; padding-top: 10px">Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
+
+          <div class="dropdown">
+  <span><i class="glyphicon glyphicon-user" style="padding: 4px 7px; font-size: 20px;"></i></span>
+  <div class="dropdown-content" style="padding: 5px 10px">
+          <a href="{% url 'bookmarks' %}" ><span>See Bookmarks</span></a>
+          <hr style="margin: 0px">
+          <a href="{% url 'password_change' %}"><span>Change Password</span></a>
+          <hr style="margin:  0px">
+          <a href="{% url 'logout' %}" ><span>Logout</span></a>
+  </div>
+</div>
+</span>
+      {% else %}
+        <span><a href="{% url 'signup' %}" class="button" id="login"><span>Sign Up</span></a>  <a href="{% url 'login' %}"class="button" id="login"><span>Login</span></a></span>
+      {% endif %}
   </div>
 </form>
 </div>

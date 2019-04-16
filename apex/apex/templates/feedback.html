@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 
 {% block content %}
+<h2 style="text-transform: capitalize;" id="heading">Feedback</h2>
 {% load widget_tweaks %}
 {% load staticfiles %}
 
@@ -46,7 +47,7 @@
     </div>
   {% endfor %}
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" style="background-color: #34495e">Submit</button>
 </form>
 
 {% endblock %}
