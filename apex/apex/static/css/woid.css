@@ -523,11 +523,11 @@ a {
 }
 
 header {
-  border-bottom: 1px solid #3498db;
+  border-bottom: 1px solid #263238;
   padding: 25px 20px 20px 50px;
   margin-bottom: 20px;
-  background-color:  #34495e;
-  box-shadow: 0px 2px 5px #3498db;
+  background-color:  #455a64;
+  box-shadow: 0px 2px 5px #263238;
 }
 #search{
   margin-left: 20%;
@@ -670,7 +670,7 @@ h3 {
 }
 
 #posttitle{
-  background-color: #34495e;
+  background-color: #3fb0ac;
   padding: 10px;
   border-radius: 10px;
   color: #ebebe0;
@@ -776,7 +776,7 @@ color: white;
   position: relative;
   display: inline-block;
   border-radius: 3px;
-  background-color: #34495e;
+  background-color: #455a64;
   color: #ffffff;
   text-align: center;
   padding: 5px;
@@ -790,7 +790,7 @@ color: white;
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #1de9b6;
   font-size: 15px;
   margin-right: 5px;
   left: -60%;
