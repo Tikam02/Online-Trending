@@ -20,3 +20,4 @@ urllib3==1.24.1
 wrapt==1.11.1
 django-widget_tweaks==1.4.3
 feedparser
+psycopg2
