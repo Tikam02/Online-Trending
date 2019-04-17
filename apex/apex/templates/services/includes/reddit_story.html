@@ -19,4 +19,20 @@
     </div>
   </p>
 </div>
+      <div class="fb-share-button"
+         data-href="{{ story.url }}"
+         data-layout="button_count" data-size="small">
+      <a target="_blank"
+         href="https://www.facebook.com/sharer/sharer.php?u={{ story.url }}"
+         class="fb-xfbml-parse-ignore">Share</a>
+    </div>
+    <a class="twitter-share-button"
+       href="https://twitter.com/intent/tweet?text={{ story.url }}"
+       data-size="large">
+      Tweet</a>
+    <a class="linkedin-share-button"
+       href="https://www.linkedin.com/shareArticle?mini=true&url={{ story.url }}&title={{ story.title }}
+  "
+       data-size="large">
+      LinkedIn</a>
 </li>
