@@ -4,7 +4,18 @@
   <li><a href="{% url 'front_page' %}"{% if request.path == '/' %} class="active"{% endif %} class="button" style="
   text-transform: capitalize;"><span>Everything</span></a></li>
   {% for slug in services_slugs %}
+  	{% ifnotequal slug.slug "google-news" %}
+  	{% ifnotequal slug.slug "nytimes" %}
     <li><a href="{% url 'services:index' slug.slug %}"{% if request.path|startswith:slug.slug %} class="active"{% endif %}class="button" style="
   text-transform: capitalize;"><span>{{ slug.name }}</span></a></li>
+     {% endifnotequal %}
+     {% endifnotequal %}
   {% endfor %}
+  <div class="dropdown">
+  <button class="dropbtn">News</button>
+  <div class="dropdown-content">
+    <a href="{% url 'services:index' "google-news" %}">Google News</a>
+    <a href="{% url 'services:index' "nytimes" %}"">New York Times</a>
+  </div>
+</div>
 </ul>
