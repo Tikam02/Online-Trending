@@ -10,12 +10,22 @@
   text-transform: capitalize;"><span>{{ slug.name }}</span></a></li>
      {% endifnotequal %}
      {% endifnotequal %}
+
   {% endfor %}
-  <div class="dropdown">
-  <button class="dropbtn">News</button>
+  <div class="news">
+  <span>News</span>
+  <div class="news-content" style="padding: 5px 10px">
+          <a href="{% url 'services:index' "google-news" %}"><span>Google News</span></a>
+          <hr style="margin: 0px">
+          <a href="{% url 'services:index' "nytimes" %}""><span>New York Times</span></a>
+  </div>
+</div>
+
+  <!--
+  <li class="dropdown"><span>News</span></li>
   <div class="dropdown-content">
     <a href="{% url 'services:index' "google-news" %}">Google News</a>
     <a href="{% url 'services:index' "nytimes" %}"">New York Times</a>
   </div>
-</div>
+-->
 </ul>

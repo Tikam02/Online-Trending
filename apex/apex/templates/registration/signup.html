@@ -30,8 +30,8 @@
       {% csrf_token %}
       {% include 'includes/form.html' %}
       <div>
-        <div style="font-size: 10px">[Password must contain 8 characters with atleast 1 numeric, 1 special character, 1 alphabet ]</div>
-        <button type="submit" id="submit" >Create an account</button>
+        <div style="font-size: 10px">[Password is not too similar to user name, contains more than 8 characters, not a commonly used password, contains less than all numeric]</div>
+        <button type="submit" id="submit" style="margin-top: 15px; background-color: #218093;">Create an account</button>
         <div id="having_account">Already have an account? <a href="{% url 'login' %}">Login</a></div>
       </div>
     </form>

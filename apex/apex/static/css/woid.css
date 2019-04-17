@@ -276,9 +276,9 @@ button {
         float: right;
         left: 90%;
         border-color: rgba(85, 85, 85, 0.2);
-        background-color: #34495e;
+        background-color: #016E81;
         padding: 5px;
-        margin-bottom: 15px;
+        margin-bottom: 40px;
         border-radius: 4px;
 
     }
@@ -484,11 +484,36 @@ a {
 }
 
 
+.news{
+  border-radius: 3px;
+  background-color: #22BEB6;
+  color: #ffffff;
+  text-align: center;
+  padding: 4px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+}
+.news:hover .news-content {
+  display: block;
+}
 
+.news-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  font-size: 15px;
+  margin-right: 5px;
+  left: -50%;
+  right: -50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 150px;
+}
 
 .button {
   border-radius: 3px;
-  background-color: #70a1ff;
+  background-color: #22BEB6;
   color: #ffffff;
   text-align: center;
   padding: 5px;
@@ -523,15 +548,65 @@ a {
 }
 
 header {
-  border-bottom: 1px solid #263238;
+  border-bottom: 1px solid #016E81;
   padding: 25px 20px 20px 50px;
   margin-bottom: 20px;
-  background-color:  #455a64;
-  box-shadow: 0px 2px 5px #263238;
+  background-color:  #016E81;
+  box-shadow: 0px 2px 5px #22BEB6;
 }
 #search{
   margin-left: 20%;
 }
+
+body.dark{
+  background-color: black;
+  color: #fff;
+}
+
+.stories.dark{
+  background-color: #527a7a;
+}
+
+.mode ul{
+  position: relative;
+  font-size: 16px;
+  float: right;
+  margin-right: 10px;
+  padding: 0px;
+  background-color: #22BEB6;
+  color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  height: 30px;
+  overflow: hidden;
+}
+
+.mode ul li{
+  list-style: none;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+
+.mode ul.active li{
+  transform: translateY(-30px);  
+}
+
+.mode ul li span{
+  display: block;
+  height: 30px;
+  line-height: 33px;
+  width: 100%;
+}
+
+.mode ul li span:nth-child(1){
+  background-color: #262626;
+  color: #fff;
+}
+
 
 #heading{
   font-weight: bolder; 
@@ -667,10 +742,11 @@ h3 {
   margin: 2px 0 0;
   font-size: 11px;
   color: #666;
+  background-color: white;
 }
 
 #posttitle{
-  background-color: #3fb0ac;
+  background-color: #218093;
   padding: 10px;
   border-radius: 10px;
   color: #ebebe0;
@@ -695,10 +771,13 @@ h3 {
   padding-top: 8px;
 }
 
-#postcontent{
+.postcontent{
   padding: 20px;
   box-sizing: border-box;
   overflow: auto;
+  background-color: white;
+  color: black;
+  font-style: bold;
 }
 
 #bookmark_hn{
@@ -776,7 +855,7 @@ color: white;
   position: relative;
   display: inline-block;
   border-radius: 3px;
-  background-color: #455a64;
+  background-color: #016E81;
   color: #ffffff;
   text-align: center;
   padding: 5px;
@@ -790,13 +869,12 @@ color: white;
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #1de9b6;
+  background-color: white;
   font-size: 15px;
   margin-right: 5px;
-  left: -60%;
-  right: -40%;
+  left: -200%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 100px;
+  width: 150px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -833,34 +911,13 @@ button {
   color: rgba(0, 0, 0, 0.80);
   border: 1px solid #999;
   border: none rgba(0, 0, 0, 0);
-  background-color: #e6e6e6;
+  background-color: #016E81;
   text-decoration: none;
   border-radius: 2px;
 }
 
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
 
-button:hover,
-button:focus {
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0,0,0, 0.05)), to(rgba(0,0,0, 0.10)));
-  background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
-  background-image: -moz-linear-gradient(top, rgba(0,0,0, 0.05) 0%, rgba(0,0,0, 0.10));
-  background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
-  background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
-}
 
-button:focus {
-    outline: 0;
-}
-
-button:active {
-  box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
-  border-color: #000\9;
-}
 
 button[disabled] {
   border: none;
@@ -966,7 +1023,7 @@ ul li a.active {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  background-color: #34495e;
+  background-color: #016E81;
   border-radius: 3px;
   color: #f5f6fa;
   text-align: center;
