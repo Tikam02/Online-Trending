@@ -27,11 +27,15 @@
   <link href="{% static 'css/vendor/normalize.css' %}" rel="stylesheet">
   <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
   <link href="{% static 'css/woid.css' %}" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   {% block stylesheet %}{% endblock %}
 </head>
 <body>
+
   <div class="wrapper">
-    <header>
+    <header >
 
       <a href="{% url 'front_page' %}" class="button"><span>Home </span></a>
       
@@ -40,20 +44,12 @@
         {% include 'search_posts.html' %}
 
         {% endblock %}
+
       
-      {% if user.is_authenticated %}
-        <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
-          <a href="{% url 'password_change' %}" class="button"><span>Change Password</span></a></nav>
-          <div id="profile">
-          <a href="{% url 'logout' %}" class="button"><span>logout</span></a>
-          <a href="{% url 'bookmarks' %}" class="button"><span>See Bookmarks</span></a>
-        </div>
-          
-      {% else %}
-        <nav><a href="{% url 'signup' %}" class="button"><span>Sign Up</span></a> / <a href="{% url 'login' %}"class="button"><span>Login</span></a></nav>
-      {% endif %}
+      
     </header>
     <main>
+    <button id="myBtn"><a href="#top" style="color: white" id="button"><span class="glyphicon glyphicon-arrow-up"></span></a></button>
 
     {% for message in messages %}
       <div class="alert alert-{{ message.tags }}">
@@ -62,7 +58,7 @@
       </div>
     {% endfor %}
     {% block menu %}
-      <h1>Top Stories<span class="utc"></span></h1>
+      <h1><span id="heading">Top Stories </span><span class="utc"></span></h1>
       {% include 'includes/menu.html' %}
     {% endblock %}
     {% block content %}{% endblock %}

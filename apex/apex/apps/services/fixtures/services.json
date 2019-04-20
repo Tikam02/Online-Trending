@@ -2,7 +2,7 @@
     {
       "model": "services.Service",
       "fields": {
-        "name": "Hacker News",
+        "name": "Technology",
         "slug": "hn",
         "url": "https://news.ycombinator.com/news",
         "story_url": "https://news.ycombinator.com/item?id="
@@ -11,7 +11,7 @@
     {
       "model": "services.Service",
       "fields": {
-        "name": "Reddit",
+        "name": "Miscellaneous",
         "slug": "reddit",
         "url": "https://www.reddit.com",
         "story_url": "https://www.reddit.com"
@@ -38,17 +38,26 @@
     {
       "model": "services.Service",
       "fields": {
-        "name": "BBC Sport",
+        "name": "Sports",
         "slug": "bbc-sport",
         "url": "https://www.bbc.co.uk/sport",
         "story_url": "https://www.bbc.co.uk/posts"
       }
     },
-    {
+  {
+    "model": "services.Service",
+    "fields": {
+      "name": "Entertainment",
+      "slug": "entertainment-weekly",
+      "url": "https://ew.com/",
+      "story_url": "https://ew.com/"
+    }
+  },
+  {
       "model": "services.Service",
       "fields": {
-        "name": "Entertainment Weekly",
-        "slug": "entertainment-weekly",
+        "name": "Health",
+        "slug": "rss-feed",
         "url": "https://ew.com/",
         "story_url": "https://ew.com/"
       }

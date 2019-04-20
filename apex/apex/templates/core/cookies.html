@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
+{% load feeder %}
 
 {% block title %}Cookies {% endblock %}
 
 {% block content %}
-  <h2>cookies</h2>
+  <h2 style="text-transform: capitalize;" id="heading">cookies</h2>
+  <div style="font-size: 15px;">
+  Cookies are small files which are stored on a user's computer. They are designed to hold a modest amount of data specific to a particular client and website, and can be accessed either by the web server or the client computer.
+<br>
+We don't use any cookies for this website.
+</div>
+    {% feeds "" 10 %}
 {% endblock %}

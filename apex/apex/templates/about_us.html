@@ -1,119 +1,81 @@
+{% extends 'base_nomenu.html' %}
+{% load static %}
+{% block content %}
+<h1 id="heading">About Us  </h1>
+{% load widget_tweaks %}
 {% load staticfiles %}
+ <link href="{% static 'css/woid.css' %}" rel="stylesheet">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-      <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
-    <link href="{% static 'css/about_style.css' %}" rel="stylesheet">
-      <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Apex{% endblock %}</title>
-  <link rel="icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" sizes="32x32">
-  <link rel="icon" type="image/png" href="{% static 'img/favicon-194x194.png' %}" sizes="194x194">
-  <link rel="icon" type="image/png" href="{% static 'img/favicon-96x96.png' %}" sizes="96x96">
-  <link rel="icon" type="image/png" href="{% static 'img/android-chrome-192x192.png' %}" sizes="192x192">
-  <link rel="icon" type="image/png" href="{% static 'img/favicon-16x16.png' %}" sizes="16x16">
-  <link rel="manifest" href="{% static 'img/manifest.json' %}">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="{% static 'img/mstile-144x144.png' %}">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="mask-icon" href="{% static 'img/pinned-woid.svg' %}" color="#0e1936">
-  <link href="{% static 'css/vendor/normalize.css' %}" rel="stylesheet">
-  <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
-  <link href="{% static 'css/woid.css' %}" rel="stylesheet">
-  {% block stylesheet %}{% endblock %}
-</head>
-<body>
-    <header>
-      <a href="{% url 'front_page' %}">apex</a>
-      {% if user.is_authenticated %}
-        <nav>Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
-          <a href="{% url 'logout' %}">logout</a></nav>
-      {% else %}
-        <nav><a href="{% url 'signup' %}">sign up</a> / <a href="{% url 'login' %}">login</a></nav>
-      {% endif %}
-      <nav>&nbsp;</nav>
-    </header>
-<div class="container">
-                    <div class="row">
-                        <div class="heading-title text-center">
-                            <h3 class="text-uppercase">Our Team </h3>
-                            <p class="p-top-30 half-txt">Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend. Nam pulvinar vitae neque et porttitor. Praesent sed nisi eleifend. </p>
-                        </div>
+<div class="container_about">
+  <div  style="text-align: center; font-size: 22px; font-weight: bold ; padding-bottom: 3%;" >
+    Meet Our Team of Software Engineering Project 2019!!
+  </div>
+  <table>
+    <tr>
+      <th class="profile">
+        <img src="https://avatars1.githubusercontent.com/u/24381442?s=400&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/nidhi98gupta">Nidhi Gupta</a>
+      </div>
+        <h5 style="font-weight: bold">Team Leader and Backend Developer</h5>
+      </th>
+      <th class="profile">
+        <img src="https://avatars0.githubusercontent.com/u/10548085?s=400&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/Tikam02">Tikam Alma</a>
+      </div>
+        <h5 style="font-weight: bold">Backend Developer</h5>
+      </th>
+      <th class="profile">
+        <img src="https://avatars3.githubusercontent.com/u/37454172?s=400&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/sdhimmar006">Swapnil Dhimmar</a>
+      </div>
+        <h5 style="font-weight: bold">Backend Developer</h5>
+      </th>
+    </tr>
+    <tr>
+      <th class="profile">
+        <img src="https://avatars0.githubusercontent.com/u/39519040?s=400&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/amey-ghate">Amey Ghate</a>
+      </div>
+        <h5 style="font-weight: bold">Tester</h5>
+      </th>
+      <th class="profile">
+        <img src="https://avatars2.githubusercontent.com/u/22446326?s=400&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/RakshaRank">Raksha Rank</a>
+      </div>
+        <h5 style="font-weight: bold">Tester</h5>
+      </th>
+      <th class="profile">
+        <img src="https://avatars0.githubusercontent.com/u/25372047?s=400&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/ChiragPoddar99">Chirag Poddar</a>
+      </div>
+        <h5 style="font-weight: bold">Tester</h5>
+      </th>
+    </tr>
+    <tr>
+      <th class="profile">
+        <img src="https://avatars2.githubusercontent.com/u/25323981?s=460&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/Vishwa-Sheth">Vishwa Sheth</a>
+      </div>
+        <h5 style="font-weight: bold">UI/UX Developer</h5>
+      </th>
+      <th class="profile">
+        <img src="https://avatars0.githubusercontent.com/u/25386244?s=400&v=4" alt="" width="70%" height="70%" style="margin: 0%;">
+        <div style="padding-top: 7%;">
+        <a href="https://github.com/shreya1706">Shreya Sagar</a>
+      </div>
+        <h5 style="font-weight: bold">UI/UX Developer</h5>
+      </th>
+    </tr>
+  </table>
 
-                        <div class="col-md-4 col-sm-4">
-                            <div class="team-member">
-                                <div class="team-img">
-                                    <img src="https://image.freepik.com/free-photo/man-standing-with-a-black-t-shirt_1187-1045.jpg" alt="team member" class="img-responsive">
-                                </div>
-                                <div class="team-hover">
-                                    <div class="desk">
-                                        <h4>Hi There !</h4>
-                                        <p>I love to introduce myself as a hardcore Web Designer.</p>
-                                    </div>
-                                    <div class="s-link">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-title">
-                                <h5>Martin Smith</h5>
-                                <span>founder &amp; ceo</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="team-member">
-                                <div class="team-img">
-                                    <img src="https://image.freepik.com/free-photo/elegant-man-with-thumbs-up_1149-1595.jpg" alt="team member" class="img-responsive">
-                                </div>
-                                <div class="team-hover">
-                                    <div class="desk">
-                                        <h4>Hello World</h4>
-                                        <p>I love to introduce myself as a hardcore Web Designer.</p>
-                                    </div>
-                                    <div class="s-link">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-title">
-                                <h5>Franklin Harbet</h5>
-                                <span>HR Manager</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="team-member">
-                                <div class="team-img">
-                                    <img src="https://image.freepik.com/free-photo/well-dressed-executive-with-crossed-arms_1098-3930.jpg" alt="team member" class="img-responsive">
-                                </div>
-                                <div class="team-hover">
-                                    <div class="desk">
-                                        <h4>I love to design</h4>
-                                        <p>I love to introduce myself as a hardcore Web Designer.</p>
-                                    </div>
-                                    <div class="s-link">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-title">
-                                <h5>Linda Anderson</h5>
-                                <span>Marketing Manager</span>
-                            </div>
-                        </div>
+</div>
+</div>
 
-                    </div>
-
-                </div>
-
-</body>
-</html>
+{% endblock %}

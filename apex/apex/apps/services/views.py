@@ -32,7 +32,7 @@ from .models import PostModel
 
 
 def stories(request, service, queryset, subtitle):
-    paginator = Paginator(queryset, 100)
+    paginator = Paginator(queryset, 20)
     page = request.GET.get('page')
     try:
         stories = paginator.page(page)
@@ -42,7 +42,7 @@ def stories(request, service, queryset, subtitle):
         stories = paginator.page(paginator.num_pages)
 
     if stories.number > 1:
-        start = (stories.number - 1) * 100 + 1
+        start = (stories.number - 1) * 20 + 1
     else:
         start = 1
 
@@ -118,7 +118,7 @@ def month(request, slug, year, month):
 def day(request, slug, year, month, day):
     date = datetime.datetime(int(year), int(month), int(day))
     service = get_object_or_404(Service, slug=slug)
-    queryset = service.stories.filter(status=Story.OK, date=date)[:10]
+    queryset = service.stories.filter(status=Story.OK, date=date)[:100]
     subtitle = timezone.datetime(int(year), int(month), int(day)).strftime('%d %b %Y')
     return stories(request, service, queryset, subtitle)
 
@@ -212,16 +212,18 @@ def successView(request):
 def aboutView(request):
     return render(request,'about_us.html')
 
+def queryLookup(query):
+    lookups= Q(title__icontains=query) | Q(content__icontains=query)
+    return Story.objects.filter(lookups).distinct()
+
+
 def searchView(request):
    # return render(request,'search_posts.html')
     if request.method == 'GET':
         query= request.GET.get('q')
 
         if query:
-            lookups= Q(title__icontains=query) | Q(content__icontains=query)
-
-            results= Story.objects.filter(lookups).distinct()
-
+            results = queryLookup(query)
             return render(request,'services/search_result.html', {
                 'results': results
             })

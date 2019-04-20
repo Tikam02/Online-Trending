@@ -1,6 +1,7 @@
+<div id="search">
 <form action="{% url 'search' %}" method="GET" value="{{ request.GET.q }}">
   <div class="row">
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-6 col-md-4" style="margin-top: 0px">
       <div class="input-group">
         <input
                 type="text"
@@ -9,13 +10,127 @@
                 id="txtSearch"
                 name = "q"
                 value="{{request.GET.q}}"/>
-        <div class="input-group-btn">
-          <button class="btn btn-primary" type="submit" name="submit" value="Search">
-            <span class="glyphicon glyphicon-search"></span>
+        <div class="input-group-btn" >
+          <button class="btn btn-primary" type="submit" name="submit" value="Search" style="background-color: #22BEB6; border: 1px solid #22BEB6">
+            <span class="glyphicon glyphicon-search" ></span>
           </button>
         </div>
       </div>
     </div>
+    {% if user.is_authenticated %}
+      
+        <span style="margin-bottom: -2px; color: white; padding-left: 50px; padding-top: 15px">Welcome {{ user.username }} ! Last Logged in {{ user.last_login}}
+          <div class="dropdown">
+  <span><i class="glyphicon glyphicon-user" style="padding: 4px 7px; font-size: 20px;"></i></span>
+  <div class="dropdown-content" style="padding: 5px 10px">
+          <a href="{% url 'bookmarks' %}" ><span>See Bookmarks</span></a>
+          <hr style="margin: 0px">
+          <a href="{% url 'password_change' %}"><span>Change Password</span></a>
+          <hr style="margin:  0px">
+          <a href="{% url 'logout' %}" ><span>Logout</span></a>
+  </div>
+</div>
+<span onclick="dark()"  id="dropdown" style="font-size: 20px; float: right; margin-top: 10px"><span class="glyphicon glyphicon-adjust" style="background-color: #016E81"></span></span>
+    
+    
+    <script>
+    document.body.style.backgroundColor = sessionStorage.getItem('bg');
+document.body.style.color = sessionStorage.getItem('cc');
+document.getElementsByTagName("li").style.backgroundColor=sessionStorage.getItem('sbg');
+document.getElementsByClassName("stories").getElementsByTagName("li").style.color=sessionStorage.getItem('scc');
+function dark() {
+     if ( sessionStorage.getItem('bg') === 'rgb(0, 0, 0)') {
+         
+            sessionStorage.setItem('bg', 'rgb(255, 255, 255)');
+            sessionStorage.setItem('cc', '#000');
+            sessionStorage.setItem('sbg', 'rgb(255, 255, 255)');
+            sessionStorage.setItem('scc', '#000');
+         
+     }
+    else if (sessionStorage.getItem('bg') == null || undefined) {
+        sessionStorage.setItem('bg', 'rgb(0, 0, 0)');
+        sessionStorage.setItem('cc', '#fff');
+        sessionStorage.setItem('sbg', 'rgb(0, 0, 0)');
+        sessionStorage.setItem('scc', '#fff');
+        
+    }
+    else if( sessionStorage.getItem('bg') === 'rgb(255, 255, 255)') {
+        
+        sessionStorage.setItem('bg', 'rgb(0, 0, 0)');
+        sessionStorage.setItem('cc', '#fff');
+        sessionStorage.setItem('sbg', 'rgb(0, 0, 0)');
+        sessionStorage.setItem('scc', '#fff');
+  
+    }
+
+document.body.style.backgroundColor = sessionStorage.getItem('bg');
+document.body.style.color = sessionStorage.getItem('cc');
+var x=document.getElementsByClassName("stories");
+x.style.backgroundColor=sessionStorage.getItem('sbg');
+x.style.color=sessionStorage.getItem('scc');
+
+}  
+    
+    </script>
+</span>
+      {% else %}
+      
+        <span>
+          
+      <a href="{% url 'signup' %}" class="button" id="login" style="color: white;"><span>Sign Up</span></a>  <a href="{% url 'login' %}"class="button" id="login"><span>Login</span></a>
+      
+<span onclick="dark()" class="button" id="login" style="font-weight: bold"><span class="glyphicon glyphicon-adjust"></span></span>
+    
+    
+    <script>
+    document.body.style.backgroundColor = sessionStorage.getItem('bg');
+document.body.style.color = sessionStorage.getItem('cc');
+
+var ele = document.getElementsByTagName("p");
+for (var i=0;i<ele.length; i++) {
+  ele[i].style.backgroundColor = sessionStorage.getItem('sbg');
+}
+ele = document.getElementsByClassName("postcontent");
+for (var i=0;i<ele.length; i++) {
+  ele[i].style.backgroundColor = sessionStorage.getItem('sbg');
+}
+function dark() {
+     if ( sessionStorage.getItem('bg') === 'rgb(0, 0, 0)') {
+         
+            sessionStorage.setItem('bg', 'rgb(255, 255, 255)');
+            sessionStorage.setItem('cc', '#000');
+            sessionStorage.setItem('sbg', 'rgb(255, 255, 255)');
+         
+     }
+    else if (sessionStorage.getItem('bg') == null || undefined) {
+        sessionStorage.setItem('bg', 'rgb(0, 0, 0)');
+        sessionStorage.setItem('cc', '#fff');
+        sessionStorage.setItem('sbg','rgb(252, 246, 136)');
+        
+    }
+    else if( sessionStorage.getItem('bg') === 'rgb(255, 255, 255)') {
+        
+        sessionStorage.setItem('bg', 'rgb(0, 0, 0)');
+        sessionStorage.setItem('cc', '#fff');
+        sessionStorage.setItem('sbg', 'rgb(252, 246, 136)');
+  
+    }
+
+document.body.style.backgroundColor = sessionStorage.getItem('bg');
+document.body.style.color = sessionStorage.getItem('cc');
+var elements = document.getElementsByTagName("p");
+for (var i=0;i<elements.length; i++) {
+  elements[i].style.backgroundColor = sessionStorage.getItem('sbg');
+}
+elements = document.getElementsByClassName("postcontent");
+for (var i=0;i<elements.length; i++) {
+  elements[i].style.backgroundColor = sessionStorage.getItem('sbg');
+}
+}  
+    
+    </script>
+      </span>
+      {% endif %}
   </div>
 </form>
-
+</div>

@@ -3,6 +3,9 @@
 {% load staticfiles %}
 
 {% block stylesheet %}
+  <link href = "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel = "stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="{% static 'css/registration.css' %}" rel="stylesheet">
   <link rel="stylesheet"  href=" {% static 'css/register.css' %}" >
 {% endblock %}
@@ -20,15 +23,15 @@
 {% block content %}
 <div id="container" >
   <h2 id="title">
-   <img src="{% static 'img/lock.png' %}" id="invert_s">
     Sign Up
   </h2>
-  <div id="form" style="color: #D0D0D0; font-size:  17px; ">
+  <div id="form" style= "font-size:  17px; ">
     <form method="post">
       {% csrf_token %}
       {% include 'includes/form.html' %}
       <div>
-        <button type="submit" id="submit" >Create an account</button>
+        <div style="font-size: 10px">[Password is not too similar to user name, contains more than 8 characters, not a commonly used password, contains less than all numeric]</div>
+        <button type="submit" id="submit" style="margin-top: 15px; background-color: #218093;">Create an account</button>
         <div id="having_account">Already have an account? <a href="{% url 'login' %}">Login</a></div>
       </div>
     </form>

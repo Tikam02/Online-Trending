@@ -1,23 +1,35 @@
 <li>
   <div id="posttitle">
   <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" id="ptitle">{{ story.title }}</a>
-  {% if append_service %}
-    <small><strong>{{ story.service.name }}</strong></small>
-  {% endif %}
 </div>
-<div id="postcontent">
-  <p>
+<div class="postcontent">
+  <p style=" text-transform: capitalize;">
     {{ story.score }} point{{ story.score|pluralize }}
-    &bullet;
     {{ story.date|date:'M d, Y'|lower }}
     <div id="bookmark_post">
+      <span style="float: right;font-size: 20px; margin: 15px; margin-left: 0px; margin-bottom: 0px;">
+          <span class="fb-share-button"
+         data-href="{{ story.url }}"
+         data-layout="button_count" data-size="small">
+      <a target="_blank"
+         href="https://www.facebook.com/sharer/sharer.php?u={{ story.url }}"
+         class="fb-xfbml-parse-ignore"> <i class="fa fa-facebook"></i></a>
+    </span>
+          <a class="twitter-share-button"
+       href="https://twitter.com/intent/tweet?text={{ story.url }}"
+       data-size="large"> <i class="fa fa-twitter"></i></a>
+          <a class="linkedin-share-button"
+       href="https://www.linkedin.com/shareArticle?mini=true&url={{ story.url }}&title={{ story.title }}
+  "
+       data-size="large"><i class="fa fa-linkedin"></i></a>
+  </span>
   {% include 'services/includes/bookmark_sec.html' %}
 </div>
   </p>
   <table>
-    <th>
+    <th class="story">
   <img src= {{ story.image_url }} alt="We could not display the image" height=150></th>
-    <th>
+    <th class="story">
   <p style="font-size:17px">
     {{ story.description }}
   </p>

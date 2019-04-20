@@ -5,11 +5,11 @@
 {% block title %}Status{% endblock %}
 
 {% block content %}
-  <h2>status</h2>
+  <h2 id="heading" style="text-transform: capitalize;">Status</h2>
 
   <table class="status">
     <thead>
-      <tr>
+      <tr style="text-transform: capitalize;">
         <th>service</th>
         <th>status</th>
         <th>last update</th>
@@ -18,7 +18,7 @@
     <tbody>
       {% for service in services %}
       <tr>
-        <td>{{ service.slug }}</td>
+        <td>{{ service.name }}</td>
         <td>{{ service.get_status_display }}</td>
         <td>
           {% if service.status == 'C' %}

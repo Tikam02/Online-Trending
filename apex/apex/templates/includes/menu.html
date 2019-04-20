@@ -1,15 +1,31 @@
 {% load startswith %}
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{% block title %}Online Trending{% endblock %}</title>
-<link href="{% static 'css/woid.css' %}" rel="stylesheet" >
-{% block stylesheet %}{% endblock %}
-</head>
+
 <ul class="menu-services">
-  <li><a href="{% url 'front_page' %}"{% if request.path == '/' %} class="active"{% endif %}  class="button"><span>front page</span></a></li>
+  <li><a href="{% url 'front_page' %}"{% if request.path == '/' %} class="active"{% endif %} class="button" style="
+  text-transform: capitalize;"><span>Everything</span></a></li>
   {% for slug in services_slugs %}
-    <li><a href="{% url 'services:index' slug %}"{% if request.path|startswith:slug %}  class="active"{% endif %} class="button"><span>{{ slug }}</span></a></li>
+  	{% ifnotequal slug.slug "google-news" %}
+  	{% ifnotequal slug.slug "nytimes" %}
+    <li><a href="{% url 'services:index' slug.slug %}"{% if request.path|startswith:slug.slug %} class="active"{% endif %}class="button" style="
+  text-transform: capitalize;"><span>{{ slug.name }}</span></a></li>
+     {% endifnotequal %}
+     {% endifnotequal %}
+
   {% endfor %}
+  <div class="news">
+  <span>News</span>
+  <div class="news-content" style="padding: 5px 10px">
+          <a href="{% url 'services:index' "google-news" %}"><span>Google News</span></a>
+          <hr style="margin: 0px">
+          <a href="{% url 'services:index' "nytimes" %}""><span>New York Times</span></a>
+  </div>
+</div>
+
+  <!--
+  <li class="dropdown"><span>News</span></li>
+  <div class="dropdown-content">
+    <a href="{% url 'services:index' "google-news" %}">Google News</a>
+    <a href="{% url 'services:index' "nytimes" %}"">New York Times</a>
+  </div>
+-->
 </ul>

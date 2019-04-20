@@ -1,0 +1,34 @@
+<li>
+  <div id="posttitle">
+  <a href="{{ story.url }}" target="_blank" rel="nofollow noopener" id="ptitle">{{ story.title }}</a>
+  <!--  <button type="bullet" value="reset">Bookmark this</button> -->
+  </div>
+<div class="postcontent">
+  <p style=" text-transform: capitalize;">
+    {{ story.date|date:'M d, Y'|lower }}
+    <div id="bookmark_post">
+      <span style="float: right;font-size: 20px; margin: 15px; margin-left: 0px; margin-bottom: 0px;">
+          <span class="fb-share-button"
+         data-href="{{ story.url }}"
+         data-layout="button_count" data-size="small">
+      <a target="_blank"
+         href="https://www.facebook.com/sharer/sharer.php?u={{ story.url }}"
+         class="fb-xfbml-parse-ignore"> <i class="fa fa-facebook"></i></a>
+    </span>
+          <a class="twitter-share-button"
+       href="https://twitter.com/intent/tweet?text={{ story.url }}"
+       data-size="large"> <i class="fa fa-twitter"></i></a>
+          <a class="linkedin-share-button"
+       href="https://www.linkedin.com/shareArticle?mini=true&url={{ story.url }}&title={{ story.title }}
+  "
+       data-size="large"><i class="fa fa-linkedin"></i></a>
+  </span>
+  {% include 'services/includes/bookmark_sec.html' %}
+</div>
+  </p>
+  <p style="font-size:17px; font-weight: bold;">
+    {{ story.description }}
+  </p>
+</div>
+</li>
+
