@@ -7,6 +7,14 @@
 ### [Team Members](#team-members)
 ### [Git Tutorial](https://www.atlassian.com/git/tutorials/what-is-version-control) 
 
+******
+![Alt Text](https://github.com/Tikam02/Online-Trending/blob/master/img/main.png)
+
+![Alt Text](https://github.com/Tikam02/Online-Trending/blob/master/img/login.png)
+
+![Alt Text](https://github.com/Tikam02/Online-Trending/blob/master/img/signup.png)
+
+![Alt Text](https://github.com/Tikam02/Online-Trending/blob/master/img/status.png)
 
 
 ******
