@@ -1,4 +1,7 @@
 # Online-Trending - Apex
+
+![GitHub contributors](https://img.shields.io/github/contributors-anon/Tikam02/Online-Trending?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/Tikam02/Online-Trending?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/Tikam02/Online-Trending?style=for-the-badge)
+
 *****
 ### [Installation](#project-installation-and-running-locally)
 ### [Contribution And Development](#developers-guide-to-contribute)
